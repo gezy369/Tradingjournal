@@ -1,0 +1,262 @@
+
+
+/* ############# START OF FLEX STYLE* ############# */
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
+
+.flex-top-parent-element{
+  display: flex;
+  width: 100%;
+}
+.flex-top-child-element {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  border-radius: 1px;
+  box-shadow: 5px 5px 8px #E6E6E6;
+  padding : 20px;
+  margin:10px
+}
+.flex-parent-element {
+  display: flex;
+  width: 100%;
+}
+.flex-child-element {
+  flex: 1;
+  background-color: white;
+  border-radius: 1px;
+  box-shadow: 5px 5px 8px #E6E6E6;
+  padding : 20px;
+  margin:10px
+}
+.flex-child-element:first-child {
+  margin-right: 10;
+}
+#top-flex-box{
+  /*display: flex;
+  width: 100%;**/*
+}
+#left-flex-box{
+  /*margin-left: 10%;*/
+}
+#right-flex-box{
+  flex-grow:5;
+}
+
+/* ############# END OF FLEX STYLE* ############# */
+
+/* --------------- General style --------------- */
+body{
+  background-color: #F2F2F2;
+}
+*,
+*:before,
+*:after {
+ -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+body {
+ font-family: 'Lato', sans-serif;
+ color: grey;
+}
+
+
+/* --------------- Journal Table --------------- */
+table {
+ margin: 10px auto;
+ text-align: left;
+ border-collapse: collapse;
+ /*width: 1150px;*/
+}
+td, th{
+ text-align: center;
+ vertical-align: middle;
+ font-weight: normal;
+}
+thead th {
+ background: #004f99;
+ color: #fff;
+ font-size: 13px;
+}
+thead {
+box-shadow: 0px 5px 5px #E6E6E6;
+}
+
+tbody{
+ font-size: 13px;
+}
+
+tbody [rowspan],
+tbody [rowspan] ~ th,
+tbody [rowspan] ~ td,
+
+tbody {
+ border-top: solid #E6E6E6;
+ border-top-width: thin;
+}
+tbody td:nth-last-of-type(1),
+tbody td:nth-last-of-type(2) {
+ text-align: center;
+}
+tbody:nth-child(odd) {
+ background: #f7f7f773;
+}
+.dates_cell{
+ text-align: left;
+ vertical-align: middle;
+ padding-left: 8px;
+ width: 80px;
+}
+.nbr_trade_cell{
+  width: 30px;
+}
+table .contracts{
+ font-size: 12px;
+}
+
+
+/* style for input */
+table input[type="number"]{
+  width: 60px;
+  border: transparent;
+  margin: 1px;
+  background-color: transparent;
+  font-size: 10px;
+  text-align: center;
+  color:lightgrey;
+ }
+
+.editbtn{
+  /*width: 65%;*/
+}
+table input:hover{
+ background-color: #FFE5CC;
+}
+
+tbody:hover .dates_cell {
+  font-weight: bold;
+}
+table p {
+margin:0;
+}
+#weekendDay{
+  background: #004f99 !important;
+  letter-spacing: 5px;
+  font-size: 12px;
+  color: white;
+  text-align: left;
+  box-shadow: 0px 5px 5px #E6E6E6;
+  padding-left: 8px;
+}
+.green{
+  color:green
+  !important;
+}
+.red{
+  color:red
+  !important;
+}
+.grey{
+  color:grey
+  !important;
+}
+.runner{
+  border-right: thin solid #004f99;
+  border-left: thin dashed lightgrey;
+  width: 60px;
+}
+.main{
+  border-left: thin solid #004f99;
+  width: 60px;
+}
+
+
+
+
+
+/* POP UP window style */
+* {
+  box-sizing: border-box;
+}
+
+/* Fixer le bouton sur le côté gauche de la page */
+.open-btn {
+  display: flex;
+  justify-content: flex-start;
+}
+/* Stylez et fixez le bouton sur la page */
+.open-button {
+  background-color: #1c87c9;
+  color: white;
+  padding: 2px 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+/* Positionnez la forme Popup */
+.login-popup {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+/* Masquez la forme Popup */
+.form-popup {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-45%, 5%);
+  border: 2px solid #666;
+  z-index: 9;
+}
+/* Styles pour le conteneur de forme */
+.form-container {
+  max-width: 300px;
+  padding: 20px;
+  background-color: #fff;
+}
+/* Largeur complète pour les champs de saisie */
+.form-container input[type="text"],
+.form-container #account_selection_to_update {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #eee;
+}
+/*Quand les entrées sont concentrées, faites quelque chose */
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+/*Taille du lable des checkbox */
+#chk_lbl{
+  font-size: 11px;
+}
+/* Stylez le bouton de creation et update*/
+.form-container .btn {
+  background-color: #9bc261;
+  color: #fff;
+  padding: 2px 2px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 2px;
+  opacity: 0.8;
+}
+/* Stylez le bouton pour annuler */
+.form-container .cancel {
+  background-color: #8aa6b9;
+}
+/* Stylez le bouton pour supprimer */
+.form-container .delete {
+  background-color: #ff6969;
+}
+/* Planez les effets pour les boutons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
