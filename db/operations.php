@@ -3,6 +3,12 @@ DB operation triggered by $_POST variables
 ------------------------------------------------------------------------------------------->
 <?php
 // ----------------------------------------------------------------------------------- //
+// Variables.
+// ----------------------------------------------------------------------------------- //
+
+$nbroftrades = 7; //max number of daily trade
+
+// ----------------------------------------------------------------------------------- //
 // Account DB operation.
 // ----------------------------------------------------------------------------------- //
 
@@ -74,13 +80,17 @@ if (isset($_POST['edit_trade'])) {
   $runner_pts04 = $_POST['runner_pts04'];
   $main_pts05   = $_POST['main_pts05'];
   $runner_pts05 = $_POST['runner_pts05'];
+  $main_pts06   = $_POST['main_pts06'];
+  $runner_pts06 = $_POST['runner_pts06'];
+  $main_pts07   = $_POST['main_pts07'];
+  $runner_pts07 = $_POST['runner_pts07'];
   $trade_id     = $_POST['trade_id'];
 
   $pos_main = 0;  //initiate positive trades count
   $neg_main = 0;  //initiate negative trades count
 
   //count the trades
-  for ($i = 1; $i <= 5; $i++) {
+  for ($i = 1; $i <= $nbroftrades; $i++) {
     if ($_POST['main_pts0'.$i] > 0) {
       $pos_main++;
     }elseif ($_POST['main_pts0'.$i] < 0) {
@@ -98,7 +108,7 @@ if (isset($_POST['edit_trade'])) {
   $fees = 3.98; //fee per contract in and out
   $benefit = 50; //dollar amount per points earned
 
-  for ($i = 1; $i <= 5; $i++) {
+  for ($i = 1; $i <= $nbroftrades; $i++) {
     if ($_POST['main_pts0'.$i] > 0) {
       //add the points to the positive total
       $totpospoints = $totpospoints + $_POST['main_pts0'.$i];
@@ -140,6 +150,10 @@ if (isset($_POST['edit_trade'])) {
   runner_pts04  ='$runner_pts04',
   main_pts05    ='$main_pts05',
   runner_pts05  ='$runner_pts05',
+  main_pts06    ='$main_pts06',
+  runner_pts06  ='$runner_pts06',
+  main_pts07    ='$main_pts07',
+  runner_pts07  ='$runner_pts07',
   gain          ='$gain',
   loss          ='$loss',
   costs         ='$cost'
@@ -174,6 +188,10 @@ if (isset($_POST['new_trade'])) {
   $runner_pts04 = $_POST['runner_pts04'];
   $main_pts05   = $_POST['main_pts05'];
   $runner_pts05 = $_POST['runner_pts05'];
+  $main_pts06   = $_POST['main_pts06'];
+  $runner_pts06 = $_POST['runner_pts06'];
+  $main_pts07   = $_POST['main_pts07'];
+  $runner_pts07 = $_POST['runner_pts07'];
   $trade_date   = $_POST['trade_date'];
   $account      = $_POST['current_account']; 
 
@@ -198,6 +216,10 @@ if (isset($_POST['new_trade'])) {
   runner_pts04,
   main_pts05,
   runner_pts05,
+  main_pts06,
+  runner_pts06,
+  main_pts07,
+  runner_pts07,
   trade_date,
   acc_fid)
   VALUES(
@@ -221,6 +243,10 @@ if (isset($_POST['new_trade'])) {
   '$runner_pts04',
   '$main_pts05',
   '$runner_pts05',
+  '$main_pts06',
+  '$runner_pts06',
+  '$main_pts07',
+  '$runner_pts07',
   '$trade_date',
   '$account')";
 //acount ID here !!
