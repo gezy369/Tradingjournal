@@ -1,6 +1,6 @@
 
 
-/* ############# START OF FLEX STYLE* ############# */
+/* ------------------------- START OF FLEX STYLE* ------------------------- */
 /* https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
 
 .flex-top-parent-element{
@@ -42,7 +42,7 @@
   flex-grow:5;
 }
 
-/* ############# END OF FLEX STYLE* ############# */
+/* ------------------------- END OF FLEX STYLE* ------------------------- */
 
 /* --------------- General style --------------- */
 body{
