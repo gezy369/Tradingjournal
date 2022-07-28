@@ -103,8 +103,8 @@
     <?php
     $tr = 0;         //used to display weekends in the journal table
     $btnID = 0;      //used for button IDs in the trade journal
+    $popupID = 0;    //allow to display the details popup at the right place
     $current_account_id = $_POST['current_account_id'];
-    $popupID = 0;
     ?>
 
   <body>
@@ -519,6 +519,7 @@
 
       // ----------------------------------------------------------------------------------- //
       // Color the numbers according to their values when the document loads
+      // has to sit in the bottom of the page to treat everything already displayed
       // ----------------------------------------------------------------------------------- //
       $(document).ready(function(){
         const contracts = document.querySelectorAll(".contracts");
