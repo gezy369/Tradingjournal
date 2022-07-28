@@ -7,7 +7,12 @@ DB operation triggered by $_POST variables
 // ----------------------------------------------------------------------------------- //
 
 $nbroftrades = 7; //max number of daily trade possible
-$_SESSION['current_selected_account'] = $_POST['current_account']; // Pass the current account ID further
+
+if (isset($_POST['current_account_id'])){ //allows to display the same account data after insrte or update of the table
+  $_SESSION['current_selected_account'] = $_POST['current_account_id'];
+}else{
+  $_POST['current_account_id'] = $_SESSION['current_selected_account'];
+}
 
 // ----------------------------------------------------------------------------------- //
 // Account DB operation.
@@ -71,6 +76,10 @@ if (isset($_POST['edit_trade'])) {
   $runner_cnt04 = $_POST['runner_cnt04'];
   $main_cnt05   = $_POST['main_cnt05'];
   $runner_cnt05 = $_POST['runner_cnt05'];
+  $main_cnt06   = $_POST['main_cnt06'];
+  $runner_cnt06 = $_POST['runner_cnt06'];
+  $main_cnt07   = $_POST['main_cnt07'];
+  $runner_cnt07 = $_POST['runner_cnt07'];
   $main_pts01   = $_POST['main_pts01'];
   $runner_pts01 = $_POST['runner_pts01'];
   $main_pts02   = $_POST['main_pts02'];
@@ -141,6 +150,10 @@ if (isset($_POST['edit_trade'])) {
   runner_cnt04  ='$runner_cnt04',
   main_cnt05    ='$main_cnt05',
   runner_cnt05  ='$runner_cnt05',
+  main_cnt06    ='$main_cnt06',
+  runner_cnt06  ='$runner_cnt06',
+  main_cnt07    ='$main_cnt07',
+  runner_cnt07  ='$runner_cnt07',
   main_pts01    ='$main_pts01',
   runner_pts01  ='$runner_pts01',
   main_pts02    ='$main_pts02',

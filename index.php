@@ -107,7 +107,7 @@
     $tr = 0;         //used to display weekends in the journal table
     $btnID = 0;      //used for button IDs in the trade journal
     $popupID = 0;    //allow to display the details popup at the right place
-    $current_selected_account = $_SESSION['current_selected_account']; //will display the current account trades and data
+    $current_account_id = $_POST['current_account_id'];
     ?>
 
   <body>
@@ -119,10 +119,8 @@
       <div class="form-popup" id="popupFormCreate">
         <form class="form-container" action="" method="post">
           <h2>Create a new account</h2>         
-          
           <label for="Account name">Account Name </label>
-          <input type="text" name="new_account_name">
-                    
+          <input type="text" name="new_account_name">       
           <button type="submit" class="btn">Create</button>
           <button type="button" class="btn cancel" onclick="closeFormCreate()">Cancel</button>
         </form>
@@ -228,7 +226,7 @@
                 if ($result->num_rows > 0) {
                   // output data of each row
                   while($row = $result->fetch_assoc()) {
-                    if ($row[id] == $current_selected_account){$select = "selected";}else{$select = "";} //select the current used account
+                    if ($row[id] == $_SESSION['current_selected_account']){$select = "selected";}else{$select = "";} //select the current used account
                     echo "<option value='$row[id]' '$select'> $row[acc_name] </option>";
                   }
                 }
