@@ -6,7 +6,7 @@ DB operation triggered by $_POST variables
 // Variables.
 // ----------------------------------------------------------------------------------- //
 
-$nbroftrades = 7; //max number of daily trade
+$nbroftrades = 7; //max number of daily trade possible
 
 // ----------------------------------------------------------------------------------- //
 // Account DB operation.
@@ -91,9 +91,9 @@ if (isset($_POST['edit_trade'])) {
 
   //count the trades
   for ($i = 1; $i <= $nbroftrades; $i++) {
-    if ($_POST['main_pts0'.$i] > 0) {
+    if ($_POST['main_pts0'.$i] > 0) { //count the winning trades
       $pos_main++;
-    }elseif ($_POST['main_pts0'.$i] < 0) {
+    }elseif ($_POST['main_pts0'.$i] < 0) { //count the losing trades
       $neg_main++;
     }
   }
@@ -113,12 +113,12 @@ if (isset($_POST['edit_trade'])) {
       //add the points to the positive total
       $totpospoints = $totpospoints + $_POST['main_pts0'.$i];
       //add the contracts to the positive total
-      $totposcontracts = $totposcontracts + $_POST['main_cnt0'.$i];
+      $totposcontracts = $totposcontracts + abs($_POST['main_cnt0'.$i]); // abs() returns the absolute value : ex. -4 become 4
     }elseif ($_POST['main_pts0'.$i] < 0) {
       //add the points to the negative total
       $totnegpoints = $totnegpoints + $_POST['main_pts0'.$i];
       //add the contracts to the negative total
-      $totnegcontracts = $totnegcontracts + $_POST['main_cnt0'.$i];
+      $totnegcontracts = $totnegcontracts + abs($_POST['main_cnt0'.$i];) // abs() returns the absolute value : ex. -4 become 4
     }
   }
   $gain = (($totpospoints * $benefit) * $totposcontracts);
