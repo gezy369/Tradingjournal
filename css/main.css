@@ -1,1 +1,100 @@
+/* POP UP window style */
+* {
+  box-sizing: border-box;
+}
 
+/* Fixer le bouton sur le côté gauche de la page */
+.open-btn {
+  display: flex;
+  justify-content: flex-start;
+}
+/* Stylez et fixez le bouton sur la page */
+.open-button {
+  background-color: #1c87c9;
+  color: white;
+  padding: 2px 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+/* Positionnez la forme Popup */
+.login-popup {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+/* Masquez la forme Popup */
+.form-popup {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-45%, 5%);
+  border: 2px solid #666;
+  z-index: 9;
+}
+/* Styles pour le conteneur de forme */
+.form-container {
+  max-width: 300px;
+  padding: 20px;
+  background-color: #fff;
+}
+/* Largeur complète pour les champs de saisie */
+.form-container input[type="text"],
+.form-container #account_selection_to_update {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #eee;
+}
+/*Quand les entrées sont concentrées, faites quelque chose */
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+/*Taille du lable des checkbox */
+#chk_lbl{
+  font-size: 11px;
+}
+/* Stylez le bouton de creation et update*/
+.form-container .btn {
+  background-color: #9bc261;
+  color: #fff;
+  padding: 2px 2px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 2px;
+  opacity: 0.8;
+}
+/* Stylez le bouton pour annuler */
+.form-container .cancel {
+  background-color: #8aa6b9;
+}
+/* Stylez le bouton pour supprimer */
+.form-container .delete {
+  background-color: #ff6969;
+}
+/* Planez les effets pour les boutons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+body{
+  background-color: #F2F2F2;
+}
+*,
+*:before,
+*:after {
+ -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+body {
+ font-family: 'Lato', sans-serif;
+ color: grey;
+}
