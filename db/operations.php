@@ -2,11 +2,13 @@
 DB operation triggered by $_POST variables
 ---------------------------------------------------------------------------------------->
 <?php
+session_start();
 // ----------------------------------------------------------------------------------- //
 // Variables.
 // ----------------------------------------------------------------------------------- //
 
 $nbroftrades = 7; //max number of daily trade possible
+$_SESSION['current_selected_account'] = $_POST['current_account']; // Pass the current account ID further
 
 // ----------------------------------------------------------------------------------- //
 // Account DB operation.
@@ -256,7 +258,4 @@ if (isset($_POST['new_trade'])) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 }  
-// Pass the current account ID further
-session_start();
-$_SESSION['current_selected_account'] = $_POST['current_account'];
 ?>
