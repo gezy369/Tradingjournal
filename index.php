@@ -228,7 +228,7 @@
                 if ($result->num_rows > 0) {
                   // output data of each row
                   while($row = $result->fetch_assoc()) {
-                    if ($row[id] == $current_selected_account){$select = "selected";} //select the current used account
+                    if ($row[id] == $current_selected_account){$select = "selected";}else{$select = "";} //select the current used account
                     echo "<option value='$row[id]' '$select'> $row[acc_name] </option>";
                   }
                 }
