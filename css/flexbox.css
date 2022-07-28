@@ -1,0 +1,40 @@
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
+
+.flex-top-parent-element{
+  display: flex;
+  width: 100%;
+}
+.flex-top-child-element {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  border-radius: 1px;
+  box-shadow: 5px 5px 8px #E6E6E6;
+  padding : 20px;
+  margin:10px
+}
+.flex-parent-element {
+  display: flex;
+  width: 100%;
+}
+.flex-child-element {
+  flex: 1;
+  background-color: white;
+  border-radius: 1px;
+  box-shadow: 5px 5px 8px #E6E6E6;
+  padding : 20px;
+  margin:10px
+}
+.flex-child-element:first-child {
+  margin-right: 10;
+}
+#top-flex-box{
+  /*display: flex;
+  width: 100%;**/*
+}
+#left-flex-box{
+  /*margin-left: 10%;*/
+}
+#right-flex-box{
+  flex-grow:5;
+}
