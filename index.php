@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <?php
+      session_start();
+    ?>
     <!-- REFERENCES -------------------------------------------------------------------------->
     <!-- <script src="https://code.jquery.com/jquery-1.7.2.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -104,7 +107,7 @@
     $tr = 0;         //used to display weekends in the journal table
     $btnID = 0;      //used for button IDs in the trade journal
     $popupID = 0;    //allow to display the details popup at the right place
-    $current_account_id = $_POST['current_account_id'];
+    $current_selected_account = $_SESSION['current_selected_account']; //will display the current account trades and data
     ?>
 
   <body>
@@ -225,7 +228,8 @@
                 if ($result->num_rows > 0) {
                   // output data of each row
                   while($row = $result->fetch_assoc()) {
-                    echo "<option value='$row[id]'> $row[acc_name] </option>";
+                    if ($row[id] == $current_selected_account){$select = "selected";} //select the current used account
+                    echo "<option value='$row[id]' '$select'> $row[acc_name] </option>";
                   }
                 }
               ?>
