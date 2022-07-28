@@ -6,7 +6,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="./javascript/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link href="./css/main.css" rel="stylesheet"/>
     <link href="./css/table.css" rel="stylesheet"/>
+    <link href="./css/flexbox.css" rel="stylesheet"/>
     <?php
     require __DIR__ . '/functions/functions.php';
     require __DIR__ . '/db/db_conn.php';
