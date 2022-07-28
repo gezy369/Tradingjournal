@@ -358,7 +358,7 @@
                 //Set the variables for each dates
                 foreach ($aDates as $day) {
                   $FuncDay = substr($day, -2);
-                  $weekend = check_day($FuncDay,$month,$year);      //to test if date is a weekend
+                  $weekend = check_weekend($FuncDay,$month,$year);      //to test if date is a weekend
                   $today = check_day($FuncDay,$month,$year);        //test if the dat is today
                   $fulldate = $year."-".$month."-".$FuncDay;        //to use in SELECT query     
                   $btnID ++;                                        //increase butons IDs
@@ -373,19 +373,18 @@
                     <?php $tr ++;}else{
                       $tr = 0;
                       }?>
-                    <?php }else{ //else if not weekend, displays the data
-
+                    <?php }else{ //else if not weekend, displays the data 
                     //SQL QUERY : Display DB data
                     $sql = "SELECT * FROM trades WHERE trade_date='$fulldate' AND acc_fid='$current_account_id'";
-                    $result = $conn->query($sql);
-  
+                    $result = $conn->query($sql); 
                     if ($result->num_rows > 0) { //if data to be displayed
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
-                        //p/l calculation
+                        
+                        //p&l calculation
                         $pl = ($row["gain"] + $row["loss"]) - $row["costs"];
                         ?>
-                        <tbody>
+                        <tbody id="<?php echo $today;?>">
                         <form method="post">
                         <!-- contracts line -->
                         <tr class="contracts">
@@ -443,7 +442,7 @@
                       }
                     }else{
                   ?>
-                  <tbody>
+                  <tbody id="<?php echo $today;?>">
                 <form method="post">
                 <tr class="contracts">
                   <td rowspan="2" class="dates_cell" id="<?php echo $weekend; ?>"> <?php echo $day; ?> </td>
@@ -507,16 +506,16 @@
         color.addEventListener('keyup', () => {
           if (this.event.target.value >= 1) {
             this.event.target.style.color = '#3dbd3a'; //green
-            this.event.target.style.fontWeight = "900"; //bold
+            this.event.target.style.fontWeight = "700"; //bold
             
           }
           else if (this.event.target.value < 0) {
             this.event.target.style.color = '#fc5b5b'; //red
-            this.event.target.style.fontWeight = "900"; //bold
+            this.event.target.style.fontWeight = "700"; //bold
           }
           else {
             this.event.target.style.color = 'inherit';
-            this.event.target.style.fontWeight = "900"; //bold
+            this.event.target.style.fontWeight = "700"; //bold
           }
         })
       }
@@ -533,16 +532,16 @@
         for (var i = 0; i < contracts.length; i++)
         if(contracts[i].value != 0){
           contracts[i].style.color = 'grey';
-          contracts[i].style.fontWeight = "900"; //bold
+          contracts[i].style.fontWeight = "700"; //bold
         }
         //if <0 then red else >0 green
           for (var i = 0; i < points.length; i++)
           if(points[i].value < 0){
             points[i].style.color = '#fc5b5b'; //red
-            points[i].style.fontWeight = "900"; //bold
+            points[i].style.fontWeight = "700"; //bold
           }else if(points[i].value > 0){
             points[i].style.color = '#3dbd3a'; //green
-            points[i].style.fontWeight = "900"; //bold
+            points[i].style.fontWeight = "700"; //bold
           }
         });      
     </script>

@@ -32,7 +32,7 @@ function check_weekend($daytocheck,$monthtocheck,$yeartocheck){
 // This function will check if the given date is a weekend or weekday, and return
 // the result. It is used in the Trade Journal table.
 // ----------------------------------------------------------------------------------- //
-function check_today($daytocheck,$monthtocheck,$yeartocheck){
+function check_day($daytocheck,$monthtocheck,$yeartocheck){
 
     //Date in YYYY-MM-DD format.
     $date = date($yeartocheck."-".$monthtocheck."-".$daytocheck);

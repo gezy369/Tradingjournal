@@ -2,7 +2,6 @@
 DB operation triggered by $_POST variables
 ---------------------------------------------------------------------------------------->
 <?php
-session_start();
 // ----------------------------------------------------------------------------------- //
 // Variables.
 // ----------------------------------------------------------------------------------- //
@@ -120,7 +119,7 @@ if (isset($_POST['edit_trade'])) {
       //add the points to the negative total
       $totnegpoints = $totnegpoints + $_POST['main_pts0'.$i];
       //add the contracts to the negative total
-      $totnegcontracts = $totnegcontracts + abs($_POST['main_cnt0'.$i];) // abs() returns the absolute value : ex. -4 become 4
+      $totnegcontracts = $totnegcontracts + abs($_POST['main_cnt0'.$i]); // abs() returns the absolute value : ex. -4 become 4
     }
   }
   $gain = (($totpospoints * $benefit) * $totposcontracts);
