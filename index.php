@@ -8,7 +8,7 @@
     <!-- <script src="https://code.jquery.com/jquery-1.7.2.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="./javascript/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js"></script>
     <link href="./css/main.css" rel="stylesheet"/>
     <link href="./css/table.css" rel="stylesheet"/>
     <link href="./css/flexbox.css" rel="stylesheet"/>
@@ -99,7 +99,7 @@
 
     </style>
   </head>
-
+  <body>
     <!-- ----------------------------------------------------------------------------------------------------------->
     <!--  PHP variables init. -->
     <!-- ----------------------------------------------------------------------------------------------------------->
@@ -109,8 +109,14 @@
     $popupID = 0;    //allow to display the details popup at the right place
     $current_account_id = $_POST['current_account_id'];
     ?>
-
-  <body>
+    <!-- ----------------------------------------------------------------------------------------------------------->
+    <!--  PHP Get the user profile informations -->
+    <!-- ----------------------------------------------------------------------------------------------------------->
+    <?php
+      $sql = "SELECT * FROM users WHERE email = 'sir.gezy@gmail.com'";
+      $result = $conn->query($sql);
+      $userprofile = $result->fetch_assoc();
+    ?>
 
     <!-- ----------------------------------------------------------------------------------------------------------->
     <!--  New account creation popup -->
@@ -171,41 +177,106 @@
         <!-- ----------------------------------------------------------------------------------------------------------->
         <!--  Chart -->
         <!-- ----------------------------------------------------------------------------------------------------------->
-        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+ <!-- https://www.anychart.com/blog/2021/07/28/line-chart-js/ -->
+ <div id="container"></div>
+      <script>
 
-        <script>
-          var xyValues = [
-            {x:50, y:7},
-            {x:60, y:8},
-            {x:70, y:8},
-            {x:80, y:9},
-            {x:90, y:9},
-            {x:100, y:9},
-            {x:110, y:10},
-            {x:120, y:11},
-            {x:130, y:14},
-            {x:140, y:14},
-            {x:150, y:15}
+        anychart.onDocumentReady(function () {
+
+          // create a data set on our data
+          var dataSet = anychart.data.set(getData());
+          
+          // map data for the first series,
+          // take x from the zero column and value from the first column
+          var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+
+          // map data for the second series,
+          // take x from the zero column and value from the second column
+          var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+        
+          // map data for the third series,
+          // take x from the zero column and value from the third column 
+          //var thirdSeriesData = dataSet.mapAs({ x: 0, value: 3 });
+          
+          // map data for the fourth series,
+          // take x from the zero column and value from the fourth column
+          //var fourthSeriesData = dataSet.mapAs({ x: 0, value: 4 });
+
+          // create a line chart
+          var chart = anychart.line();
+
+          // turn on the line chart animation
+          chart.animation(true);
+          
+          // configure the chart title text settings
+          chart.title('Yearly P/L');
+
+          // set the y axis title
+          chart.yAxis().title('$P/L');
+          
+          // turn on the crosshair
+          chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+
+          // create the first series with the mapped data
+          var firstSeries = chart.spline(firstSeriesData);
+          firstSeries
+            .name('Account')
+            .stroke('2 #a8d9f6')
+            .tooltip()
+            .format("Account : ${%value}");
+
+          // create the second series with the mapped data
+          var secondSeries = chart.spline(secondSeriesData);
+          secondSeries
+            .name('Trailing Threshold')
+            .stroke('2 #f49595')
+            .tooltip()
+            .format("Threshold : ${%value}");
+          
+          /*// create the third series with the mapped data
+          var thirdSeries = chart.spline(thirdSeriesData);
+          thirdSeries
+            .name('35-49')
+            .stroke('3 #f9eb97')
+            .tooltip()
+            .format("Age group 35-49 : {%value}%");*/
+
+          
+          /*// create the fourth series with the mapped data
+          var fourthSeries = chart.line(fourthSeriesData);
+          fourthSeries
+            .name('65+')
+            .stroke('3 #e2bbfd')
+            .tooltip()
+            .format("Age group 65+ : {%value}%");*/
+
+          // turn the legend on
+          chart.legend().enabled(true);
+
+          // set the container id for the line chart
+          chart.container('container');
+          
+          // draw the line chart
+          chart.draw();
+
+        });
+
+        function getData() {
+            return [
+            ['January',50000,47500],
+            ['February',51500,49000],
+            ['March',54000,51000],
+            ['April',59000,51000],
+            ['May',59500,51000],
+            ['June',64200,51000],
+            ['July',66000,51000],
+            ['August',63800,51000],
+            ['September',66000,51000],
+            ['November',69500,51000],
+            ['December',72630,51000],
           ];
-
-          new Chart("myChart", {
-            type: "line",
-            data: {
-              datasets: [{
-                pointRadius: 4,
-                pointBackgroundColor: "rgb(0,0,255)",
-                data: xyValues
-              }]
-            },
-            options: {
-              legend: {display: false},
-              scales: {
-                xAxes: [{ticks: {min: 40, max:160}}],
-                yAxes: [{ticks: {min: 6, max:16}}],
-              }
-            }
-          });
-        </script>
+        }
+      </script>
       </div>
     </div>
     <!-- ----------------------------------------------------------------------------------------------------------->
@@ -216,7 +287,37 @@
       <!--  Left flexbox -->
       <!-- ----------------------------------------------------------------------------------------------------------->
       <div class="flex-child-element" id="left-flex-box">
-          <!--  Dropdow list for account selection -->
+
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <!--  User profile information -->
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <!--  Welcome username -->
+        <p><span><?php echo "Welcome back ".$userprofile['name']; ?></span></p>
+        <!-- Rounded switch -->
+        <?php
+        //If emotion soother activated
+        if ($userprofile['pl'] == 1) {
+          $checked = "checked";
+          $display_tabl_pl = "none";
+        }else {
+          $checked = "unchecked";
+          $display_tabl_pl = "true";
+        }
+        ?>
+        <p>
+          <form method="post"><span>
+            <label class="switch">
+            <input type="hidden" value="0" name="pl_switch_off">
+            <input type="checkbox" value="1" name="pl_switch_on" <?php echo $checked; ?> onclick="this.form.submit();">
+            <span class="slider round"></span>
+            </label>
+            <span>Emotion soother</span>
+          </form>
+        </span></p>
+
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <!--  Dropdown list for account selection -->
+        <!-- ----------------------------------------------------------------------------------------------------------->
           <form method="post">
             <select name="current_account_id" id="account_selection">
               <?php
@@ -321,7 +422,7 @@
                   <th colspan="2" class="trade"> Trade - 5 </th>
                   <th colspan="2" class="trade"> Trade - 6 </th>
                   <th colspan="2" class="trade"> Trade - 7 </th>
-                  <th class="trade"> Daily </th>
+                  <th class="trade" style="display:<?php echo $display_tabl_pl; ?>;"> Daily </th>
                   <th rowspan="2"> Edit </th>
                 </tr>
                 <tr>
@@ -339,7 +440,7 @@
                   <th> Runner </th>
                   <th> Main </th>
                   <th> Runner </th>
-                  <th class="daily"> Net G/L </th>
+                  <th class="daily" style="display:<?php echo $display_tabl_pl; ?>;"> Net G/L </th>
                 </tr>
               </thead>
 
@@ -404,7 +505,7 @@
                         <td class="runner"><input name="runner_cnt06" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt06"]; ?>" readonly="readonly" ></td>
                         <td class="main"><input name="main_cnt07" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt07"]; ?>" readonly="readonly" ></td>
                         <td class="runner"><input name="runner_cnt07" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt07"]; ?>" readonly="readonly" ></td>
-                        <td rowspan="2" style="display:none;">
+                        <td rowspan="2" style="display:<?php echo $display_tabl_pl; ?>;">
                           <div class="popup" onclick="openDetails(<?php echo $popupID; ?>)">
                             <?php echo $pl; ?>
                             <span class="popuptext" id="<?php echo $popupID; ?>">
@@ -461,7 +562,7 @@
                   <td class="runner"><input name="runner_cnt06" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
                   <td class="main"><input name="main_cnt07" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
                   <td class="runner"><input name="runner_cnt07" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                  <td rowspan="2"> 0 </td>
+                  <td rowspan="2" style="display:<?php echo $display_tabl_pl; ?>;"> 0 </td>
                   <td rowspan="2"><button type="button" name="new_trade" class="editbtn" id="<?php echo 'btn'.$btnID; ?>">Edit</button><input type="hidden" name="trade_date" value="<?php echo $fulldate; ?>"><input type="hidden" name="current_account" value="<?php echo $current_account_id; ?>"></td>
                   <!-- <td rowspan="2"><input type="image" class="editbtn" id="editbtn" alt="edit" value ="Edit" src="./img/edit-11-24.png"></td> -->
                 </tr>
