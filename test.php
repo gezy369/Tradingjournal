@@ -75,5 +75,22 @@
         <!-- --------------------------------------------------------------------------POPUPS--END -->
     </head>
     <body>
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <!--  PHP variables init. -->
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <?php
+        $tr = 0;         //used to display weekends in the journal table
+        $btnID = 0;      //used for button IDs in the trade journal
+        $popupID = 0;    //allow to display the details popup at the right place
+        $current_account_id = $_POST['current_account_id'];
+        ?>
+        <!-- ------------------------------------------
+            PHP Get the user profile informations 
+        <!-- ----------------------------------------->
+        <?php
+        $sql = "SELECT * FROM users WHERE email = 'sir.gezy@gmail.com'";
+        $result = $conn->query($sql);
+        $userprofile = $result->fetch_assoc();
         
+        ?>
     </body>
