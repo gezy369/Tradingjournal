@@ -5,23 +5,23 @@
         <?php   session_start();    ?>
 
         <!-- REFERENCES -----------------------------------------------------------------------START -->
-        <!--
-            chart
-        -->
+        <!-- chart -->
         <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js"></script>
         <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
-        
+        <!-- Jquery / javascript-->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="./javascript/scripts.js"></script>
-        <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js"></script>
+        <!-- css -->
         <link href="./css/main.css" rel="stylesheet"/>
         <link href="./css/table.css" rel="stylesheet"/>
         <link href="./css/flexbox.css" rel="stylesheet"/>
+        <!-- php files -->
         <?php
         require __DIR__ . '/functions/functions.php';
         require __DIR__ . '/db/db_conn.php';
         require __DIR__ . '/db/operations.php';  
-        error_reporting (E_ALL ^ E_NOTICE); // avoid index errors ?>
+        error_reporting (E_ALL ^ E_NOTICE); // avoid index errors
+        ?>
 
         <!-- -----------------------------------------------------------------------REFERENCES---END -->
 
