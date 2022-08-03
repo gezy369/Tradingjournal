@@ -5,7 +5,12 @@
         <?php   session_start();    ?>
 
         <!-- REFERENCES -----------------------------------------------------------------------START -->
-
+        <!--
+            chart
+        -->
+        <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+        
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="./javascript/scripts.js"></script>
         <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js"></script>
