@@ -90,7 +90,39 @@
         <?php
         $sql = "SELECT * FROM users WHERE email = 'sir.gezy@gmail.com'";
         $result = $conn->query($sql);
-        $userprofile = $result->fetch_assoc();
-        
+        $userprofile = $result->fetch_assoc();      
         ?>
+        
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <!--  Main grid container
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <div id="grid-main-container">
+
+            <div class="grid-item" id="grid-item-top">
+                <!-- displays the top chart -->
+                <script src="./top-chart.js"></script>
+            </div>
+
+            <div class="grid-item" id="grid-item-main">
+                main
+            </div>
+        <!-- ----------------------------------------------------------------------------------------------------------->
+        <!--  Main menu container
+        <!-- ----------------------------------------------------------------------------------------------------------->
+            <div id="grid-menu-container">
+
+                <div class="grid-item" id="grid-item-menu-1">  
+                    <!-- displays the donut chart -->
+                    <script src="./long-short-chart.js"></script>
+                </div>
+
+                <div class="grid-item" id="grid-item-menu-2">
+                    <!-- displays the donut chart -->
+                    <script src="./win-ratio-chart.js"></script>
+                </div>
+
+            </div>
+
+        </div>
+        
     </body>
