@@ -45,3 +45,8 @@ function closeFormManage() {
 document.getElementById("popupFormManage").style.display = "none";
 }
 
+// opens P&L detail popup when click on daily P&L
+function openDetails(spanid) {
+  var popup = document.getElementById(arguments[0]);
+  popup.classList.toggle("show");
+}
