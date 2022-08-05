@@ -15,8 +15,8 @@
         <script src="./javascript/scripts.js"></script>
         <!-- css -->
         <link href="./css/main.css" rel="stylesheet"/>
-        <link href="./css/table.css" rel="stylesheet"/>
-        <link href="./css/flexbox.css" rel="stylesheet"/>
+        <!-- <link href="./css/table.css" rel="stylesheet"/> -->
+        <!-- <link href="./css/flexbox.css" rel="stylesheet"/> -->
         <link href="./css/grid.css" rel="stylesheet"/>
         <!-- php files -->
         <?php
@@ -97,6 +97,8 @@
             }
             
         </style>
+    </head>
+    <body>
         <!-- ------------------------------------------------------------------------------------------------------------
             POPUPS : All the popoups that will be displayed through the main page
         ---------------------------------------------------------------------------------------------------------------->
@@ -150,8 +152,7 @@
           </div>
         </div>
         <!-- --------------------------------------------------------------------------POPUPS--END -->
-    </head>
-    <body>
+
         <!-- ------------------------------------------------------------------------------------------------------------
             PHP variables init.
         ---------------------------------------------------------------------------------------------------------------->

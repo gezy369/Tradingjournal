@@ -1,3 +1,15 @@
+body{
+    background-color: aliceblue;
+    font-family: 'Lato', sans-serif;
+    color: grey;
+}
+#login_name{
+    text-align: center;
+    font-weight: 700;
+}
+
+
+
 /* POP UP window style */
 * {
   box-sizing: border-box;
@@ -83,11 +95,7 @@
 .open-button:hover {
   opacity: 1;
 }
-body{
-  background-color: aliceblue;
-  font-family: 'Lato', sans-serif;
-  color: grey;
-}
+
 *,
 *:before,
 *:after {
