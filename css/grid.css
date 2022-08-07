@@ -5,6 +5,7 @@
     padding: 20px;
     grid-template-columns: 200px 1300px;
     grid-template-rows: 250px auto;
+    justify-content: center;
 }
 
 #grid-main-container > .grid-item, #grid-menu-container > .grid-item{

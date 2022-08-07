@@ -126,7 +126,6 @@ if (isset($_POST['edit_trade'])) {
         //Increment total contracts for fee calculation
         $total_contracts = $total_contracts + abs($_POST['main_cnt0'.$i]);
 
-
     }
 
     $cost = $fees * $total_contracts;

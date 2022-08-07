@@ -1,4 +1,51 @@
- anychart.onDocumentReady(function () {
+anychart.onDocumentReady(function () {
+    
+    var $nbroftrades = 7;
+    
+    
+    //DB query
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query("SELECT * FROM trades", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        });
+    });
+
+    //count all the points > 0 and where contrat > 0
+    //count all the points < 0 and where contrat > 0
+
+    //calculate the P/L
+    for (var $i = 1; $i <= $nbroftrades; $i++) {
+        
+        if ($_POST['main_pts0'.$i] > 0) {
+
+            //Calculate P&L per green trade
+            $tradePL = abs($_POST['main_cnt0'.$i]) * ($_POST['main_pts0'.$i] * $benefitPerPoint);
+            $gain = $gain + $tradePL;
+            $pos_main ++;
+
+        }elseif ($_POST['main_pts0'.$i] <= 0 AND $_POST['main_cnt0'.$i] != 0) {
+            
+            //Calculate P&L per red trade. Had to test contract to be able to to 0 points into account
+            $tradePL = abs($_POST['main_cnt0'.$i]) * ($_POST['main_pts0'.$i] * $benefitPerPoint);
+            $loss = $loss + $tradePL;
+            $neg_main ++;
+        }
+
+        //Increment total contracts for fee calculation
+        $total_contracts = $total_contracts + abs($_POST['main_cnt0'.$i]);
+
+
+    }
+
+
+    
+
+
+
+
+
     // define sample data
     var data = [
     { name: 'Win', value: 122, group: 'win' },
