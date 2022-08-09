@@ -7,8 +7,20 @@ body{
     text-align: center;
     font-weight: 700;
 }
-
-
+#account_selection{
+    width: 180px;
+}
+input[type=text], select {
+    padding: 8px 8px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#month_year_dropdown{
+    
+}
 
 /* POP UP window style */
 * {

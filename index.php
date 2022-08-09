@@ -233,22 +233,24 @@
                     <!--  Dropdown list for account selection -->
                     <!-- ----------------------------------------------------------------------------------------------------------->
                     <form method="post">
-                        <select name="current_account_id" id="account_selection">
+                        <select name="current_account_id" id="account_selection" onchange='this.form.submit()'>
                         <?php
                             $sql = "SELECT * FROM accounts";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
-                            // output data of each row
-                            while($row = $result->fetch_assoc()) {
-                                if ($row[id] == $_SESSION['current_selected_account']){$select = "selected";}else{$select = "";} //select the current used account
-                                echo "<option value='$row[id]' '$select'> $row[acc_name] </option>";
-                            }
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                                    if ($row['id'] == $current_account_id){     //select the current used account
+                                        $select = "selected";}else{$select = ""; 
+                                    } 
+                                    echo "<option value='$row[id]' $select> $row[acc_name] </option>";
+                                }
                             }
                         ?>
                         </select>
-                        <input type=submit value=Select>
                     </form>
+
 
                     <!-- Accounts management buttons -->
                     <div class="open-btn">
@@ -258,11 +260,6 @@
                     <div class="open-btn">
                         <button class="open-button" onclick="openFormManage()"><strong>Manage account</strong></button>
                     </div>
-
-
-
-
-
 
 
 
@@ -277,10 +274,40 @@
                 </div>
 
                 <!-- ---------------------------------------------
-                    Menu grid item 2                 ------------------------------------------------->
+                    Menu grid item 2                 
+                ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-2">
-                    <!-- displays the donut chart -->
-                    <script src="./javascript/win-ratio-chart.js"></script>
+                    <?php
+                    $count_winner = 0;
+                    $count_loser = 0;
+
+                    $sql = "SELECT * FROM trades WHERE acc_fid='$current_account_id'";
+                    $result = $conn->query($sql);
+
+
+                    if ($result->num_rows > 0) {
+                        //calculate the P/L
+
+                        while($row = $result->fetch_assoc()) {
+
+                        
+                            for ($i = 1; $i <= $nbroftrades; $i++) {
+                                
+                                
+                                if ($row['main_pts0'.$i] > 0) {
+
+                                    $count_winner ++;
+
+                                }elseif ($row['main_pts0'.$i] <= 0 AND $row['main_cnt0'.$i] != 0) {
+                                    
+                                    $count_loser ++;
+                                }
+                            }
+                        }
+                    }
+                    echo "<br>".$count_winner."<br>".$count_loser;
+                    ?>
+
                 </div>
 
 
@@ -327,7 +354,7 @@
                 <!-- ______________________________________ Dropdown lists ______________________________________ -->
                 <p id="month_year_dropdown">
                 <form action="" method="post">
-                    <select class="dropdown" id="month_selection" name="month_selection">
+                    <select class="dropdown" id="month_selection" name="month_selection" onclick="this.form.submit();">
                     <option value="1">January</option>
                     <option value="2">February</option>
                     <option value="3">March</option>
@@ -342,12 +369,9 @@
                     <option value="12">December</option>
                     </select>
 
-                    <select class="dropdown" id="year_selection" name="year_selection">
+                    <select class="dropdown" id="year_selection" name="year_selection" onclick="this.form.submit();">
                     <?php CreateDropDown(array(2022,2021,2020,2019),$year); ?>
                     </select>
-
-                    <input type="submit" name="submit">
-
                 </form>
 
                 <!-- ################### SET THE DROPDOWN DEFAULT VALUES ###################
