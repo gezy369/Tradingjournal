@@ -9,18 +9,18 @@
         <!-- REFERENCES -------------------------------------------------------------------------->
         <!-- <script src="https://code.jquery.com/jquery-1.7.2.js"></script> -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="./javascript/scripts.js"></script>
         <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js"></script>
+        <script src="./javascript/scripts.js"></script>
         <link href="./css/main.css" rel="stylesheet"/>
         <link href="./css/table.css" rel="stylesheet"/>
-        <link href="./css/flexbox.css" rel="stylesheet"/>
+        <link href="./css/popups.css" rel="stylesheet"/>
         <link href="./css/grid.css" rel="stylesheet"/>
         <?php
         require __DIR__ . '/functions/functions.php';
         require __DIR__ . '/db/db_conn.php';
         require __DIR__ . '/db/operations.php';  
-        error_reporting (E_ALL ^ E_NOTICE); // avoid index errors ?>
-
+        error_reporting (E_ALL ^ E_NOTICE); // avoid index errors
+        ?>
 
         <!-- --------------------------------------------------------------------------------
             opens P/L detail popup
@@ -150,8 +150,10 @@
                 <form class="form-container" action="" method="post">
                     <h2>Create a new account</h2>         
                     <label for="Account name">Account Name </label>
-                    <input type="text" name="new_account_name">       
-                    <button type="submit" class="btn">Create</button>
+                    <input type="text" name="new_account_name">
+                    <label>Base Equity </label>
+                    <input type="text" name="new_account_base">        
+                    <button type="submit" class="btn create">Create</button>
                     <button type="button" class="btn cancel" onclick="closeFormCreate()">Cancel</button>
                 </form>
             </div>
@@ -165,33 +167,38 @@
                 <form class="form-container" method="post">
                     <h2>Manage your accounts</h2>         
                     
-                    <label for="Account name">Current account Name </label>
-
+                    <label for="Account name">List Of Account(s)</label>
                     <select name="account_selection_to_update" id="account_selection_to_update">
-                        <?php
-                        $sql = "SELECT * FROM accounts";
-                        $result = $conn->query($sql);
+                                <?php
+                                $sql = "SELECT * FROM accounts";
+                                $result = $conn->query($sql);
 
-                        if ($result->num_rows > 0) {
-                            // output data of each row
-                            while($row = $result->fetch_assoc()) {
-                            echo "<option value='$row[id]'> $row[acc_name] </option>";
-                            }
-                        }
-                        ?>
-                    </select>
-                    <button type="submit" class="btn delete" name="delete_account">Delete</button>
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while($row = $result->fetch_assoc()) {
+                                    echo "<option value='$row[id]'> $row[acc_name] </option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                    <!----------------------> <hr> <!---------------------->
+                    <label>Account Name </label>
+                    <input type="text" name="updated_name">
+                    <label>Base Equity </label>
+                    <input type="text" name="updated_base">
+                    <label>Adjustement </label>
+                    <input type="text" name="updated_adjust">  
+
+                    <button type="submit" class="btn update" name="update_account">Update</button>
+                    <button type="submit" class="btn delete" name="delete_account" onclick="return confirm('Are you sure you want to delete this account?\nAll the related trades will be deleted as well !!\n\nWell... if you are certain of it, please\ndon\'t forget the check box.\n\nBetter be safe than sorry..');">Delete</button>
                     <label id=chk_lbl>Check before you delete</label>
                     <input type="checkbox" id="scales" name="delete">
-                    <!----------------------> <hr> <!---------------------->
-                    <label for="New account name">New account Name </label>
-                    <input type="text" name="updated_acc_name">             
-                    <button type="submit" class="btn" name="update_account">Update</button>
                     <!----------------------> <hr> <!---------------------->
                     <button type="button" class="btn cancel" onclick="closeFormManage()">Cancel</button>
                 </form>
             </div>
         </div> 
+
 
         <!-- ----------------------------------------------------------------------------------------------------------------------------------
 
