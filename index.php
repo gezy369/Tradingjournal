@@ -169,18 +169,18 @@
                     
                     <label for="Account name">List Of Account(s)</label>
                     <select name="account_selection_to_update" id="account_selection_to_update">
-                                <?php
-                                $sql = "SELECT * FROM accounts";
-                                $result = $conn->query($sql);
+                        <?php
+                        $sql = "SELECT * FROM accounts";
+                        $result = $conn->query($sql);
 
-                                if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    while($row = $result->fetch_assoc()) {
-                                    echo "<option value='$row[id]'> $row[acc_name] </option>";
-                                    }
-                                }
-                                ?>
-                            </select>
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                            echo "<option value='$row[id]'> $row[acc_name] </option>";
+                            }
+                        }
+                        ?>
+                    </select>
                     <!----------------------> <hr> <!---------------------->
                     <label>Account Name </label>
                     <input type="text" name="updated_name">
@@ -295,7 +295,7 @@
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-1">  
                     <!-- displays the donut chart -->
-                    <script src="./javascript/long-short-chart.js"></script>
+                    
                 </div>
 
                 <!-- ---------------------------------------------

@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-pie.min.js"></script>
+    </head>
+    <body>
+        <script>
+            anychart.data.loadJsonFile("./charts/data_win-ratio.php", function (data) {
+                anychart.onDocumentReady(function () {
+                
+                    var data = [
+                        {x: "Winner", value: 50},
+                        {x: "Looser", value: 11},
+                    ];
+                    // create pie chart with passed data
+                    var chart = anychart.pie(data);
+                    
+                    // set chart title text settings
+                    chart
+                        .title('% WIN RATIO')
+                        // set chart radius
+                        .radius('50%')
+                        // create empty area in pie chart
+                        .innerRadius('60%');
+                        // enable labels for a series
+
+                    // disable legend
+                    var legend = chart.legend();
+                    legend.enabled(false);
+
+                    // Centered label ---------------------------------------------------
+                    // create and configure a label
+                    /*var label = anychart.standalones.label();
+                    //label.text("80%");
+                    label.width("100%");
+                    label.height("100%");
+                    label.fontColor("grey");
+                    label.hAlign("center");
+                    label.vAlign("middle");
+                    label.fontSize("22");*/
+
+                    // set the label as the center content
+                    //chart.center().content(label);
+                    // ------------------------------------------------------------------
+
+                    // Information on hover ---------------------------------------------
+                    // configure tooltips on the chart
+                    chart.tooltip().title("Volume");
+                    chart.tooltip().format("{%value} Trades");
+                    // ------------------------------------------------------------------
+
+                    // Labels -----------------------------------------------------------
+                    chart.labels(false);
+                    // set chart labels position to outside
+                    chart.labels().position("outside");
+                    // set the offset for the labels
+                    chart.insideLabelsOffset("-75%");
+                    // font labels font settings
+                    //chart.labels().fontFamily("Menlo");
+                    //chart.labels().fontSize(18);
+                    //chart.labels().fontDecoration("underline");
+                    //chart.labels().fontWeight(900);
+                    chart.labels().fontColor("grey");
+                    // ------------------------------------------------------------------
+
+                    // set container id for the chart
+                    chart.container('grid-item-menu-1');
+
+                    // initiate chart drawing
+                    chart.draw();
+                });
+            });
+        </script>
+    </body>
+</html>
