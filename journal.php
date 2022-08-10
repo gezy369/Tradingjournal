@@ -15,6 +15,9 @@
             <th colspan="2" class="trade"> Trade - 5 </th>
             <th colspan="2" class="trade"> Trade - 6 </th>
             <th colspan="2" class="trade"> Trade - 7 </th>
+            <th colspan="2" class="trade"> Trade - 8 </th>
+            <th colspan="2" class="trade"> Trade - 9 </th>
+            <th colspan="2" class="trade"> Trade - 10 </th>
             <th class="trade" style="display:<?php echo $display_tabl_pl; ?>;"> Daily </th>
             <th rowspan="2"> Edit </th>
         </tr>
@@ -27,6 +30,12 @@
             <th> Runner </th>
             <th> Main </th>
             <th> Runner </th>
+            <th> Main </th>
+            <th> Runner </th>
+            <th> Main </th>
+            <th> Runner </th>
+            <th> Main </th>
+            <th> Runner </th>           
             <th> Main </th>
             <th> Runner </th>
             <th> Main </th>
@@ -67,7 +76,7 @@
         if ($weekend == "weekend") {
             if ($tr == 0){?>
                 <tr>
-                <td id="weekendDay" colspan="20">weekend</td>
+                <td id="weekendDay" colspan="26">weekend</td>
                 </tr>
                 <?php $tr ++;
             }else{
@@ -105,20 +114,26 @@
                                 <td rowspan="2"><?php echo $total = $row["pos_tr_count"]+$row["neg_tr_count"]; ?></td>
                                 <td rowspan="2"><?php echo $row["pos_tr_count"]; ?></td>
                                 <td rowspan="2"><?php echo $row["neg_tr_count"]; ?></td>
-                                <td class="main"><input name="main_cnt01" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt01"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_cnt01" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt01"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_cnt02" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt02"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_cnt02" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt02"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_cnt03" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt03"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_cnt03" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt03"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_cnt04" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt04"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_cnt04" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt04"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_cnt05" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt05"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_cnt05" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt05"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_cnt06" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt06"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_cnt06" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt06"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_cnt07" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt07"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_cnt07" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt07"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt1" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt1"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt1" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt1"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt2" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt2"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt2" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt2"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt3" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt3"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt3" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt3"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt4" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt4"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt4" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt4"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt5" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt5"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt5" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt5"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt6" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt6"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt6" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt6"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt7" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt7"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt7" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt7"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt8" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt8"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt8" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt8"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt9" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt9"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt9" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt9"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt10" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt10"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt10" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt10"]; ?>" readonly="readonly" ></td>
                                 <td rowspan="2" style="display:<?php echo $display_tabl_pl; ?>;">
                                     <div class="popup" onclick="openDetails(<?php echo $popupID; ?>)">
                                         <?php echo $pl; ?>
@@ -137,20 +152,26 @@
                                 POINTS
                             ------------------------------------------------->
                             <tr class="points">
-                                <td class="main"><input name="main_pts01" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts01"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_pts01" class="editable_input points " id="runner" type="number" value="<?php echo $row["runner_pts01"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_pts02" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts02"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_pts02" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts02"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_pts03" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts03"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_pts03" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts03"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_pts04" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts04"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_pts04" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts04"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_pts05" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts05"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_pts05" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts05"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_pts06" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts06"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_pts06" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts06"]; ?>" readonly="readonly" ></td>
-                                <td class="main"><input name="main_pts07" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts07"]; ?>" readonly="readonly" ></td>
-                                <td class="runner"><input name="runner_pts07" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts07"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_pts1" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts1"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_pts1" class="editable_input points " id="runner" type="number" value="<?php echo $row["runner_pts1"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_pts2" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts2"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_pts2" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts2"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_pts3" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts3"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_pts3" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts3"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_pts4" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts4"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_pts4" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts4"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_pts5" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts5"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_pts5" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts5"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_pts6" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts6"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_pts6" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts6"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_pts7" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts7"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_pts7" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts7"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt8" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt8"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt8" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt8"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt9" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt9"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt9" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt9"]; ?>" readonly="readonly" ></td>
+                                <td class="main"><input name="main_cnt10" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_cnt10"]; ?>" readonly="readonly" ></td>
+                                <td class="runner"><input name="runner_cnt10" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt10"]; ?>" readonly="readonly" ></td>
                             </tr>
                         </form>
                     </tbody> 
@@ -176,20 +197,26 @@
                             <td rowspan="2"> 0 </td>
                             <td rowspan="2"> 0 </td>
                             <td rowspan="2"> 0 </td>
-                            <td class="main"><input name="main_cnt01" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_cnt01" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_cnt02" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_cnt02" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_cnt03" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_cnt03" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_cnt04" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_cnt04" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_cnt05" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_cnt05" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_cnt06" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_cnt06" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_cnt07" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_cnt07" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt1" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt1" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt2" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt2" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt3" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt3" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt4" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt4" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt5" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt5" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt6" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt6" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt7" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt7" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt8" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt8" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt9" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt9" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_cnt010" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_cnt10" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
                             <td rowspan="2" style="display:<?php echo $display_tabl_pl; ?>;"> 0 </td>
                             <td rowspan="2"><button type="button" name="new_trade" class="editbtn" id="<?php echo 'btn'.$btnID; ?>">Edit</button><input type="hidden" name="trade_date" value="<?php echo $fulldate; ?>"><input type="hidden" name="current_account" value="<?php echo $current_account_id; ?>"></td>
                         <!-- <td rowspan="2"><input type="image" class="editbtn" id="editbtn" alt="edit" value ="Edit" src="./img/edit-11-24.png"></td> -->
@@ -198,20 +225,26 @@
                             POINTS
                         ------------------------------------------------->
                         <tr class="points">
-                            <td class="main"><input name="main_pts01" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_pts01" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_pts02" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_pts02" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_pts03" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_pts03" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_pts04" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_pts04" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_pts05" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_pts05" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_pts06" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_pts06" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main"><input name="main_pts07" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
-                            <td class="runner"><input name="runner_pts07" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts1" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts1" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts2" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts2" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts3" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts3" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts4" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts4" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts5" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts5" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts6" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts6" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts7" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts7" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts8" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts8" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts9" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts9" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main"><input name="main_pts10" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="runner"><input name="runner_pts10" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
                         </tr>
                     </form>
                 </tbody> 

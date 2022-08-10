@@ -6,7 +6,7 @@ DB operation triggered by $_POST variables
 // Variables.
 // ----------------------------------------------------------------------------------- //
 
-$nbroftrades = 7; //max number of daily trade possible
+$nbroftrades = 10; //max number of daily trade possible
 $loss = 0;
 $gain = 0;
 $pos_main = 0;  //initiate positive trades count
@@ -73,34 +73,40 @@ if (isset($_POST['delete']) AND $_POST['delete'] != "") {
 
 // UPDATE TRADES
 if (isset($_POST['edit_trade'])) {
-    $main_cnt01   = $_POST['main_cnt01'];
-    $runner_cnt01 = $_POST['runner_cnt01'];
-    $main_cnt02   = $_POST['main_cnt02'];
-    $runner_cnt02 = $_POST['runner_cnt02'];
-    $main_cnt03   = $_POST['main_cnt03'];
-    $runner_cnt03 = $_POST['runner_cnt03'];
-    $main_cnt04   = $_POST['main_cnt04'];
-    $runner_cnt04 = $_POST['runner_cnt04'];
-    $main_cnt05   = $_POST['main_cnt05'];
-    $runner_cnt05 = $_POST['runner_cnt05'];
-    $main_cnt06   = $_POST['main_cnt06'];
-    $runner_cnt06 = $_POST['runner_cnt06'];
-    $main_cnt07   = $_POST['main_cnt07'];
-    $runner_cnt07 = $_POST['runner_cnt07'];
-    $main_pts01   = $_POST['main_pts01'];
-    $runner_pts01 = $_POST['runner_pts01'];
-    $main_pts02   = $_POST['main_pts02'];
-    $runner_pts02 = $_POST['runner_pts02'];
-    $main_pts03   = $_POST['main_pts03'];
-    $runner_pts03 = $_POST['runner_pts03'];
-    $main_pts04   = $_POST['main_pts04'];
-    $runner_pts04 = $_POST['runner_pts04'];
-    $main_pts05   = $_POST['main_pts05'];
-    $runner_pts05 = $_POST['runner_pts05'];
-    $main_pts06   = $_POST['main_pts06'];
-    $runner_pts06 = $_POST['runner_pts06'];
-    $main_pts07   = $_POST['main_pts07'];
-    $runner_pts07 = $_POST['runner_pts07'];
+    $main_cnt1   = $_POST['main_cnt1'];
+    $runner_cnt1 = $_POST['runner_cnt1'];
+    $main_cnt2   = $_POST['main_cnt2'];
+    $runner_cnt2 = $_POST['runner_cnt2'];
+    $main_cnt3   = $_POST['main_cnt3'];
+    $runner_cnt3 = $_POST['runner_cnt3'];
+    $main_cnt4   = $_POST['main_cnt4'];
+    $runner_cnt4 = $_POST['runner_cnt4'];
+    $main_cnt5   = $_POST['main_cnt5'];
+    $runner_cnt5 = $_POST['runner_cnt5'];
+    $main_cnt6   = $_POST['main_cnt6'];
+    $runner_cnt6 = $_POST['runner_cnt6'];
+    $main_cnt7   = $_POST['main_cnt7'];
+    $runner_cnt7 = $_POST['runner_cnt7'];
+    $main_pts1   = $_POST['main_pts1'];
+    $runner_pts1 = $_POST['runner_pts1'];
+    $main_pts2   = $_POST['main_pts2'];
+    $runner_pts2 = $_POST['runner_pts2'];
+    $main_pts3   = $_POST['main_pts3'];
+    $runner_pts3 = $_POST['runner_pts3'];
+    $main_pts4   = $_POST['main_pts4'];
+    $runner_pts4 = $_POST['runner_pts4'];
+    $main_pts5   = $_POST['main_pts5'];
+    $runner_pts5 = $_POST['runner_pts5'];
+    $main_pts6   = $_POST['main_pts6'];
+    $runner_pts6 = $_POST['runner_pts6'];
+    $main_pts7   = $_POST['main_pts7'];
+    $runner_pts7 = $_POST['runner_pts7'];
+    $main_pts8   = $_POST['main_pts8'];
+    $runner_pts8 = $_POST['runner_pts8'];
+    $main_pts9   = $_POST['main_pts9'];
+    $runner_pts9 = $_POST['runner_pts9'];
+    $main_pts10   = $_POST['main_pts10'];
+    $runner_pts10 = $_POST['runner_pts10'];
     $trade_id     = $_POST['trade_id'];
 
 
@@ -108,23 +114,23 @@ if (isset($_POST['edit_trade'])) {
     //calculate the P/L
     for ($i = 1; $i <= $nbroftrades; $i++) {
         
-        if ($_POST['main_pts0'.$i] > 0) {
+        if ($_POST['main_pts'.$i] > 0) {
 
             //Calculate P&L per green trade
-            $tradePL = abs($_POST['main_cnt0'.$i]) * ($_POST['main_pts0'.$i] * $benefitPerPoint);
+            $tradePL = abs($_POST['main_cnt'.$i]) * ($_POST['main_pts'.$i] * $benefitPerPoint);
             $gain = $gain + $tradePL;
             $pos_main ++;
 
-        }elseif ($_POST['main_pts0'.$i] <= 0 AND $_POST['main_cnt0'.$i] != 0) {
+        }elseif ($_POST['main_pts'.$i] <= 0 AND $_POST['main_cnt'.$i] != 0) {
             
             //Calculate P&L per red trade. Had to test contract to be able to to 0 points into account
-            $tradePL = abs($_POST['main_cnt0'.$i]) * ($_POST['main_pts0'.$i] * $benefitPerPoint);
+            $tradePL = abs($_POST['main_cnt'.$i]) * ($_POST['main_pts'.$i] * $benefitPerPoint);
             $loss = $loss + $tradePL;
             $neg_main ++;
         }
 
         //Increment total contracts for fee calculation
-        $total_contracts = $total_contracts + abs($_POST['main_cnt0'.$i]);
+        $total_contracts = $total_contracts + abs($_POST['main_cnt'.$i]);
 
     }
 
@@ -134,34 +140,40 @@ if (isset($_POST['edit_trade'])) {
     $sql = "UPDATE trades SET
     pos_tr_count  ='$pos_main',
     neg_tr_count  ='$neg_main',
-    main_cnt01    ='$main_cnt01',
-    runner_cnt01  ='$runner_cnt01',
-    main_cnt02    ='$main_cnt02',
-    runner_cnt02  ='$runner_cnt02',
-    main_cnt03    ='$main_cnt03',
-    runner_cnt03  ='$runner_cnt03',
-    main_cnt04    ='$main_cnt04',
-    runner_cnt04  ='$runner_cnt04',
-    main_cnt05    ='$main_cnt05',
-    runner_cnt05  ='$runner_cnt05',
-    main_cnt06    ='$main_cnt06',
-    runner_cnt06  ='$runner_cnt06',
-    main_cnt07    ='$main_cnt07',
-    runner_cnt07  ='$runner_cnt07',
-    main_pts01    ='$main_pts01',
-    runner_pts01  ='$runner_pts01',
-    main_pts02    ='$main_pts02',
-    runner_pts02  ='$runner_pts02',
-    main_pts03    ='$main_pts03',
-    runner_pts03  ='$runner_pts03',
-    main_pts04    ='$main_pts04',
-    runner_pts04  ='$runner_pts04',
-    main_pts05    ='$main_pts05',
-    runner_pts05  ='$runner_pts05',
-    main_pts06    ='$main_pts06',
-    runner_pts06  ='$runner_pts06',
-    main_pts07    ='$main_pts07',
-    runner_pts07  ='$runner_pts07',
+    main_cnt1    ='$main_cnt1',
+    runner_cnt1  ='$runner_cnt1',
+    main_cnt2    ='$main_cnt2',
+    runner_cnt2  ='$runner_cnt2',
+    main_cnt3    ='$main_cnt3',
+    runner_cnt3  ='$runner_cnt3',
+    main_cnt4    ='$main_cnt4',
+    runner_cnt4  ='$runner_cnt4',
+    main_cnt5    ='$main_cnt5',
+    runner_cnt5  ='$runner_cnt5',
+    main_cnt6    ='$main_cnt6',
+    runner_cnt6  ='$runner_cnt6',
+    main_cnt7    ='$main_cnt7',
+    runner_cnt7  ='$runner_cnt7',
+    main_pts1    ='$main_pts1',
+    runner_pts1  ='$runner_pts1',
+    main_pts2    ='$main_pts2',
+    runner_pts2  ='$runner_pts2',
+    main_pts3    ='$main_pts3',
+    runner_pts3  ='$runner_pts3',
+    main_pts4    ='$main_pts4',
+    runner_pts4  ='$runner_pts4',
+    main_pts5    ='$main_pts5',
+    runner_pts5  ='$runner_pts5',
+    main_pts6    ='$main_pts6',
+    runner_pts6  ='$runner_pts6',
+    main_pts7    ='$main_pts7',
+    runner_pts7  ='$runner_pts7',
+    main_pts8    ='$main_pts8',
+    runner_pts8  ='$runner_pts8',
+    main_pts9    ='$main_pts9',
+    runner_pts9  ='$runner_pts9',
+    main_pts10    ='$main_pts10',
+    runner_pts10  ='$runner_pts10',
     gain          ='$gain',
     loss          ='$loss',
     costs         ='$cost'
@@ -176,85 +188,103 @@ if (isset($_POST['edit_trade'])) {
 
 // INSERT TRADES
 if (isset($_POST['new_trade'])) {
-  $main_cnt01   = $_POST['main_cnt01'];
-  $runner_cnt01 = $_POST['runner_cnt01'];
-  $main_cnt02   = $_POST['main_cnt02'];
-  $runner_cnt02 = $_POST['runner_cnt02'];
-  $main_cnt03   = $_POST['main_cnt03'];
-  $runner_cnt03 = $_POST['runner_cnt03'];
-  $main_cnt04   = $_POST['main_cnt04'];
-  $runner_cnt04 = $_POST['runner_cnt04'];
-  $main_cnt05   = $_POST['main_cnt05'];
-  $runner_cnt05 = $_POST['runner_cnt05'];
-  $main_pts01   = $_POST['main_pts01'];
-  $runner_pts01 = $_POST['runner_pts01'];
-  $main_pts02   = $_POST['main_pts02'];
-  $runner_pts02 = $_POST['runner_pts02'];
-  $main_pts03   = $_POST['main_pts03'];
-  $runner_pts03 = $_POST['runner_pts03'];
-  $main_pts04   = $_POST['main_pts04'];
-  $runner_pts04 = $_POST['runner_pts04'];
-  $main_pts05   = $_POST['main_pts05'];
-  $runner_pts05 = $_POST['runner_pts05'];
-  $main_pts06   = $_POST['main_pts06'];
-  $runner_pts06 = $_POST['runner_pts06'];
-  $main_pts07   = $_POST['main_pts07'];
-  $runner_pts07 = $_POST['runner_pts07'];
+  $main_cnt1   = $_POST['main_cnt1'];
+  $runner_cnt1 = $_POST['runner_cnt1'];
+  $main_cnt2   = $_POST['main_cnt2'];
+  $runner_cnt2 = $_POST['runner_cnt2'];
+  $main_cnt3   = $_POST['main_cnt3'];
+  $runner_cnt3 = $_POST['runner_cnt3'];
+  $main_cnt4   = $_POST['main_cnt4'];
+  $runner_cnt4 = $_POST['runner_cnt4'];
+  $main_cnt5   = $_POST['main_cnt5'];
+  $runner_cnt5 = $_POST['runner_cnt5'];
+  $main_pts1   = $_POST['main_pts1'];
+  $runner_pts1 = $_POST['runner_pts1'];
+  $main_pts2   = $_POST['main_pts2'];
+  $runner_pts2 = $_POST['runner_pts2'];
+  $main_pts3   = $_POST['main_pts3'];
+  $runner_pts3 = $_POST['runner_pts3'];
+  $main_pts4   = $_POST['main_pts4'];
+  $runner_pts4 = $_POST['runner_pts4'];
+  $main_pts5   = $_POST['main_pts5'];
+  $runner_pts5 = $_POST['runner_pts5'];
+  $main_pts6   = $_POST['main_pts6'];
+  $runner_pts6 = $_POST['runner_pts6'];
+  $main_pts7   = $_POST['main_pts7'];
+  $runner_pts7 = $_POST['runner_pts7'];
+  $main_pts8   = $_POST['main_pts8'];
+  $runner_pts8 = $_POST['runner_pts8'];
+  $main_pts9   = $_POST['main_pts9'];
+  $runner_pts9 = $_POST['runner_pts9'];
+  $main_pts10   = $_POST['main_pts10'];
+  $runner_pts10 = $_POST['runner_pts10'];
   $trade_date   = $_POST['trade_date'];
   $account      = $_POST['current_account']; 
 
   $sql = "INSERT INTO trades
-  (main_cnt01,
-  runner_cnt01,
-  main_cnt02,
-  runner_cnt02,
+  (main_cnt1,
+  runner_cnt1,
+  main_cnt2,
+  runner_cnt2,
   main_cnt03,
-  runner_cnt03,
-  main_cnt04,
-  runner_cnt04,
-  main_cnt05,
-  runner_cnt05,
-  main_pts01,
-  runner_pts01,
-  main_pts02,
-  runner_pts02,
-  main_pts03,
-  runner_pts03,
-  main_pts04,
-  runner_pts04,
-  main_pts05,
-  runner_pts05,
-  main_pts06,
-  runner_pts06,
-  main_pts07,
-  runner_pts07,
+  runner_cnt3,
+  main_cnt4,
+  runner_cnt4,
+  main_cnt5,
+  runner_cnt5,
+  main_pts1,
+  runner_pts1,
+  main_pts2,
+  runner_pts2,
+  main_pts3,
+  runner_pts3,
+  main_pts4,
+  runner_pts4,
+  main_pts5,
+  runner_pts5,
+  main_pts6,
+  runner_pts6,
+  main_pts7,
+  runner_pts7,
+  main_pts8,
+  runner_pts8,
+  main_pts9,
+  runner_pts9,
+  main_pts10,
+  runner_pts10,
   trade_date,
   acc_fid)
   VALUES(
-  '$main_cnt01',
-  '$runner_cnt01',
-  '$main_cnt02',
-  '$runner_cnt02',
-  '$main_cnt03',
-  '$runner_cnt03',
-  '$main_cnt04',
-  '$runner_cnt04',
-  '$main_cnt05',
-  '$runner_cnt05',
-  '$main_pts01', 
-  '$runner_pts01',
-  '$main_pts02', 
-  '$runner_pts02',
-  '$main_pts03',
-  '$runner_pts03',
-  '$main_pts04',
-  '$runner_pts04',
-  '$main_pts05',
-  '$runner_pts05',
-  '$main_pts06',
-  '$runner_pts06',
-  '$main_pts07',
-  '$runner_pts07',
+  '$main_cnt1',
+  '$runner_cnt1',
+  '$main_cnt2',
+  '$runner_cnt2',
+  '$main_cnt3',
+  '$runner_cnt3',
+  '$main_cnt4',
+  '$runner_cnt4',
+  '$main_cnt5',
+  '$runner_cnt5',
+  '$main_pts1', 
+  '$runner_pts1',
+  '$main_pts2', 
+  '$runner_pts2',
+  '$main_pts3',
+  '$runner_pts3',
+  '$main_pts4',
+  '$runner_pts4',
+  '$main_pts5',
+  '$runner_pts5',
+  '$main_pts6',
+  '$runner_pts6',
+  '$main_pts7',
+  '$runner_pts7',
+  '$main_pts8',
+  '$runner_pts8',
+  '$main_pts9',
+  '$runner_pts9',
+  '$main_pts10',
+  '$runner_pts10',
   '$trade_date',
   '$account')";
 //acount ID here !!
@@ -266,7 +296,7 @@ if (isset($_POST['new_trade'])) {
 }  
 
 // ----------------------------------------------------------------------------------- //
-// Trades DB operation. Act for the user preferences.
+// Emotion soother
 // ----------------------------------------------------------------------------------- //
 if (isset($_POST['pl_switch_on'])) {
   $emotion_soother_on = $_POST['pl_switch_on'];

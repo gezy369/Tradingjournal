@@ -109,6 +109,24 @@
         $btnID = 0;      //used for button IDs in the trade journal
         $popupID = 0;    //allow to display the details popup at the right place
         $current_account_id = $_POST['current_account_id'];
+        // months
+        $months[1] = "January";
+        $months[2] = "February";
+        $months[3] = "March";
+        $months[4] = "April";
+        $months[5] = "May";
+        $months[6] = "June";
+        $months[7] = "July";
+        $months[8] = "August";
+        $months[9] = "September";
+        $months[10] = "October";
+        $months[11] = "November";
+        $months[12] = "December";
+        // current and last 4 years
+        $years[1] = date("Y");
+        $years[2] = date("Y")-1;
+        $years[3] = date("Y")-2;
+        $years[4] = date("Y")-3;
         ?>
 
         <!-- -----------------------------------------------------------------------------------------------------------
@@ -287,13 +305,10 @@
 
                     if ($result->num_rows > 0) {
                         //calculate the P/L
-
                         while($row = $result->fetch_assoc()) {
-
                         
                             for ($i = 1; $i <= $nbroftrades; $i++) {
-                                
-                                
+                                               
                                 if ($row['main_pts0'.$i] > 0) {
 
                                     $count_winner ++;
@@ -338,45 +353,50 @@
                 if(isset($_POST['submit'])){
                 if(!empty($_POST['month_selection'])) {
                     $month = $_POST['month_selection'];
-                    $year = $_POST['year_selection'];
+                    $thisyear = $_POST['year_selection'];
                 }
                 } else {
                     $month = date("n");
-                    $year = date("Y");
+                    $thisyear = date("Y");
                 }
 
                 $aDates = array();
-                $oStart = new DateTime($year.$month.'/01');
+                $oStart = new DateTime($thisyear.$month.'/01');
                 $oEnd = clone $oStart;
                 $oEnd->add(new DateInterval("P1M"));
                 ?>
 
-                <!-- ______________________________________ Dropdown lists ______________________________________ -->
+                <!-- ------------------------------------------------------------------------------------------------------------
+                    Dropdown list for MONTH and YEAR selection
+                ---------------------------------------------------------------------------------------------------------------->
                 <p id="month_year_dropdown">
                 <form action="" method="post">
+                    <!-- ---------------------------------------------
+                        Displays months and select the current month
+                    -------------------------------------------------> 
                     <select class="dropdown" id="month_selection" name="month_selection" onclick="this.form.submit();">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
+                    <?php
+                    for ($i = 1; $i <= 12; $i++) { 
+                        $select = "";
+                        if(isset($_POST['month_selection']) AND $_POST['month_selection'] == $i){
+                            $select = "selected";
+                        }
+                        echo "<option value='$i' '$select'>$months[$i]</option>";
+                    }
+                    ?>
                     </select>
 
+                    <!-- ---------------------------------------------
+                        Displays year and select the current year
+                    ------------------------------------------------->
                     <select class="dropdown" id="year_selection" name="year_selection" onclick="this.form.submit();">
-                    <?php CreateDropDown(array(2022,2021,2020,2019),$year); ?>
+                    <?php CreateDropDown(array($years[1],$years[2],$years[3],$years[4]),$thisyear); ?>
                     </select>
                 </form>
 
-                <!-- ################### SET THE DROPDOWN DEFAULT VALUES ###################
-
-                -->
+                <!-- ---------------------------------------------
+                    Displays current month is nothing selected
+                -------------------------------------------------> 
                 <script>
                     document.getElementById('month_selection').selectedIndex=<?php echo $month-1; ?>;
                 </script>
