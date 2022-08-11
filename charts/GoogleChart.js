@@ -1,7 +1,10 @@
+/*---------------------------------------------------------------------------
+  % Win ratio donut chart
+---------------------------------------------------------------------------*/
 /*google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawWinRatioChart);
 
-function drawChart() {
+function drawWinRatioChart() {
 
   var data = google.visualization.arrayToDataTable([
     ['Effort', 'Amount given'],
@@ -32,6 +35,7 @@ function drawChart() {
 
 // Load the Visualization API and the piechart package.
 google.charts.load('current', {'packages':['corechart']});
+  
 // Set a callback to run when the Google Visualization API is loaded.
 google.charts.setOnLoadCallback(drawChart);
   
@@ -62,5 +66,36 @@ function drawChart() {
 
   // Instantiate and draw our chart, passing in some options.
   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+
+/*---------------------------------------------------------------------------
+  Long vs short donut chart
+---------------------------------------------------------------------------*/
+google.charts.setOnLoadCallback(drawLongShortChart);
+
+function drawLongShortChart() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Long', 'Short'],
+    ['Long', 31],
+    ['Short', 13],
+  ]);
+
+  var options = {
+    //Title and text
+    title : 'Long vs Short',
+    titleTextStyle: { color: 'grey',  fontSize: 12 },
+    legend: 'none',
+    pieSliceText: 'none',
+    //Donut
+    pieHole: 0.7,
+    pieStartAngle: 180,
+    colors:['blue','lightblue'],
+    //Chart
+    chartArea:{left:25,right:25,top:30, width:'100%',height:'100%'}
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('longshortchart'));
   chart.draw(data, options);
 }
