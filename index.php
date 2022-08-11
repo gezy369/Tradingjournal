@@ -291,7 +291,7 @@
                    
                     <!-- displays the donut chart -->  
                     <div id="winratiochart">
-                        <script src="./win_ratio_GoogleChart.js"></script>
+                        <script src="./charts/win_ratio_GoogleChart.js"></script>
                     </div>
                     <!-- Result placed in the middle of the chart -->
                     <div id="Win-Ratio-Center">
