@@ -15,6 +15,12 @@
         <link href="./css/table.css" rel="stylesheet"/>
         <link href="./css/popups.css" rel="stylesheet"/>
         <link href="./css/grid.css" rel="stylesheet"/>
+        
+        <!-- GOOGLE CHARTS -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>       
+        <script src="./charts/GoogleChart.js"></script>
+        
         <?php
         require __DIR__ . '/functions/functions.php';
         require __DIR__ . '/db/db_conn.php';
@@ -291,7 +297,7 @@
                    
                     <!-- displays the donut chart -->  
                     <div id="winratiochart">
-                        <script src="./charts/win_ratio_GoogleChart.js"></script>
+
                     </div>
                     <!-- Result placed in the middle of the chart -->
                     <div id="Win-Ratio-Center">
@@ -331,7 +337,12 @@
                     }
                     echo "<br>".$count_winner."<br>".$count_loser;
                     ?>
-
+                    
+                    
+                    <!-- displays the donut chart -->  
+                    <div id="longshortchart">
+                        
+                    </div>
                 </div>
 
 
