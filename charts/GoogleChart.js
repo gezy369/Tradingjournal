@@ -35,7 +35,6 @@ function drawWinRatioChart() {
 
 // Load the Visualization API and the piechart package.
 google.charts.load('current', {'packages':['corechart']});
-  
 // Set a callback to run when the Google Visualization API is loaded.
 google.charts.setOnLoadCallback(drawChart);
   
@@ -80,6 +79,9 @@ function drawLongShortChart() {
     ['Long', 'Short'],
     ['Long', 31],
     ['Short', 13],
+    ['Long Losses', 3],
+    ['Short', 13],
+    ['Short Losses', 2]
   ]);
 
   var options = {
@@ -91,7 +93,7 @@ function drawLongShortChart() {
     //Donut
     pieHole: 0.7,
     pieStartAngle: 180,
-    colors:['blue','lightblue'],
+    colors:['#1a8cff','lightblue','#ff884d','#ffbb99'],
     //Chart
     chartArea:{left:25,right:25,top:30, width:'100%',height:'100%'}
   };
