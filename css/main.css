@@ -79,3 +79,11 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* -------------------------- Charts -------------------------- */
+#Win-Ratio-Center{
+  position: relative;
+  top: -44%;
+  left: 34%;
+  font-size: 30px;
+}
