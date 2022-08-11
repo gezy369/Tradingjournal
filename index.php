@@ -272,8 +272,7 @@
                         ?>
                         </select>
                     </form>
-
-
+                
                     <!-- Accounts management buttons -->
                     <div class="open-btn">
                         <button class="open-button" onclick="openFormCreate()"><strong>Create new account</strong></button>
@@ -283,18 +282,16 @@
                         <button class="open-button" onclick="openFormManage()"><strong>Manage account</strong></button>
                     </div>
 
-
-
                 </div> <!-- menu item 3 -->
 
                 <!-- ---------------------------------------------
-                    Menu grid item 1
+                    Menu grid item 1 (Win Ratio CHART)
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-1">  
                    
                     <!-- displays the donut chart -->  
                     <div id="winratiochart">
-                        <script src="./doughnut_GoogleChart.js"></script>
+                        <script src="./win_ratio_GoogleChart.js"></script>
                     </div>
                     <!-- Result placed in the middle of the chart -->
                     <div id="Win-Ratio-Center">
