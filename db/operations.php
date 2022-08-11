@@ -27,8 +27,7 @@ if (isset($_POST['current_account_id'])){ //allows to display the same account d
 
 // INSERT ACCOUNT
 if (isset($_POST['new_account_name']) AND $_POST['new_account_name'] != "") {
-  $sql = "INSERT INTO accounts (acc_name, acc_base, user_fid)
-  VALUES ('$_POST['new_account_name']', '$_POST['new_account_base']','1')";
+  $sql = "INSERT INTO accounts (acc_name, acc_base, user_fid) VALUES ('$_POST[new_account_name]', '$_POST[new_account_base]','1')";
 
   if ($conn->query($sql) === TRUE) {
     echo "New account created successfully";
@@ -40,7 +39,7 @@ if (isset($_POST['new_account_name']) AND $_POST['new_account_name'] != "") {
 // UPDATE ACCOUNT
 if (isset($_POST['updated_name']) AND $_POST['updated_name'] != "") {
 
-  $sql = "UPDATE accounts SET acc_name='$_POST['updated_name']', acc_base='$_POST['updated_base']', acc_adjust='$_POST['updated_acc_adjust']' WHERE id='$_POST['account_selection_to_update']'";
+  $sql = "UPDATE accounts SET acc_name='$_POST[updated_name]', acc_base='$_POST[updated_base]', acc_adjust='$_POST[updated_acc_adjust]' WHERE id='$_POST[account_selection_to_update]'";
 
   if ($conn->query($sql) === TRUE) {
     echo "Account updated successfully";
