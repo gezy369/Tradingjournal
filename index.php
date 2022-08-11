@@ -216,14 +216,11 @@
             <div id="grid-menu-container">
 
                 <!-- ---------------------------------------------
-                    Menu grid item 3
+                    Menu grid item 3 (User info)
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-3">
  
-                    <!-- --------------------------------
-                        User profile information
-                    ------------------------------------>
-                    
+                    <!-- User profile information -->
                     <p id="login_name">
                         <?php
                         echo $userprofile['name'];
@@ -294,7 +291,15 @@
                     Menu grid item 1
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-1">  
-                    <!-- displays the donut chart -->
+                   
+                    <!-- displays the donut chart -->  
+                    <div id="winratiochart">
+                        <script src="./doughnut_GoogleChart.js"></script>
+                    </div>
+                    <!-- Result placed in the middle of the chart -->
+                    <div id="Win-Ratio-Center">
+                        80%
+                    </div>
                     
                 </div>
 
