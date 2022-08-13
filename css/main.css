@@ -18,7 +18,22 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
+#div-user-options{
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#user_options_form{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+}
+#user_options_form .switch_labels {
+    margin: 0px 20px 0px 10px;
+}
 /* -------------------------- toggle switch -------------------------- */
 .switch {
   position: relative;
@@ -83,7 +98,8 @@ input:checked + .slider:before {
 /* -------------------------- Charts -------------------------- */
 #Win-Ratio-Center{
   position: relative;
-  top: -44%;
-  left: 34%;
+  text-align: center;
+  top: -46%;
+  left: 0%;
   font-size: 30px;
 }

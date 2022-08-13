@@ -4,6 +4,11 @@
 
         <?php
         session_start();
+
+
+        $nbroftrades = 10; //max number of daily trade possible
+
+
         ?>
         
         <!-- REFERENCES -------------------------------------------------------------------------->
@@ -204,7 +209,57 @@
                 </form>
             </div>
         </div> 
+        <!-- ---------------------------------------------
+                Top grid item (display options)
+        ------------------------------------------------->   
+        <div class="" id="div-user-option">
+            
+            <?php
+            //If emotion soother activated
+            if ($userprofile['pl'] == 1) {
+                $pl_checked = "checked";
+                $display_tabl_pl = "none"; //used in the journal
+            }else {
+                $pl_checked = "unchecked";
+                $display_tabl_pl = "true"; //used in the journal
+            }
 
+            //If emotion soother activated
+            if ($userprofile['full_table'] == 1) {
+                $table_checked = "checked";
+                $display_full_table = "true"; //used in the journal
+            }else {
+                $table_checked = "unchecked";
+                $display_full_table = "none"; //used in the journal
+            }
+            ?>
+            <p>
+                <form id="user_options_form" method="post">
+                    <span>
+                        <label class="switch">
+                            <input type="hidden" value="0" name="pl_switch_off">
+                            <input type="checkbox" value="1" name="pl_switch_on" <?php echo $pl_checked; ?> onclick="this.form.submit();">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+                    <span class="switch_labels">Emotion soother</span>
+                    
+
+            </p>
+            <p>
+
+                    <span>
+                        <label class="switch">
+                            <input type="hidden" value="0" name="table_switch_off">
+                            <input type="checkbox" value="1" name="table_switch_on" <?php echo $table_checked; ?> onclick="this.form.submit();">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+                    <span class="switch_labels">Full table</span>
+                    
+                </form>
+            </p>
+        </div>               
 
         <!-- ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -212,8 +267,7 @@
 
         -------------------------------------------------------------------------------------------------------------------------------------->
         <div id="grid-main-container">
-
-
+       
             <!-- ----------------------------------------------------------------------------------------------------------------------------------
 
             MENU MAIN GRID CONTAINER
@@ -231,30 +285,6 @@
                         <?php
                         echo $userprofile['name'];
                         ?>
-                    </p>
-
-                    <!-- Emotion soother -->
-                    <?php
-                    //If activated
-                    if ($userprofile['pl'] == 1) {
-                        $checked = "checked";
-                        $display_tabl_pl = "none";
-                    }else {
-                        $checked = "unchecked";
-                        $display_tabl_pl = "true";
-                    }
-                    ?>
-                    <p>
-                        <form method="post">
-                            <span>
-                                <label class="switch">
-                                    <input type="hidden" value="0" name="pl_switch_off">
-                                    <input type="checkbox" value="1" name="pl_switch_on" <?php echo $checked; ?> onclick="this.form.submit();">
-                                    <span class="slider round"></span>
-                                </label>
-                                <span>Emotion soother</span>
-                            </span>
-                        </form>
                     </p>
 
                     <!-- ----------------------------------------------------------------------------------------------------------->
@@ -294,14 +324,40 @@
                     Menu grid item 1 (Win Ratio CHART)
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-1">  
-                   
+                    <?php
+                    // -------------------- find % ratio --------------------
+                    $count_w = 0;
+                    $count_l = 0;
+
+                    $sql = "SELECT * FROM trades WHERE acc_fid = 6";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+
+                            for ($i=0; $i <= $nbroftrades ; $i++) { 
+                                
+                                if ($row['main_pts'.$i] > 0) {
+                                    $count_w ++;
+                                }elseif ($row['main_pts'.$i] <= 0 AND $row['main_cnt'.$i] != 0) {
+                                    $count_l ++;
+                                }
+                            }
+                        }
+                    }
+
+                    //percentage of winner
+                    $winratio = intval(($count_w / ($count_l + $count_w)) * 100);
+                    ?>
+
                     <!-- displays the donut chart -->  
                     <div id="winratiochart">
 
                     </div>
                     <!-- Result placed in the middle of the chart -->
                     <div id="Win-Ratio-Center">
-                        80%
+                        <?php echo $winratio."%"; ?>
                     </div>
                     
                 </div>
@@ -310,34 +366,6 @@
                     Menu grid item 2                 
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-2">
-                    <?php
-                    $count_winner = 0;
-                    $count_loser = 0;
-
-                    $sql = "SELECT * FROM trades WHERE acc_fid='$current_account_id'";
-                    $result = $conn->query($sql);
-
-
-                    if ($result->num_rows > 0) {
-                        //calculate the P/L
-                        while($row = $result->fetch_assoc()) {
-                        
-                            for ($i = 1; $i <= $nbroftrades; $i++) {
-                                               
-                                if ($row['main_pts0'.$i] > 0) {
-
-                                    $count_winner ++;
-
-                                }elseif ($row['main_pts0'.$i] <= 0 AND $row['main_cnt0'.$i] != 0) {
-                                    
-                                    $count_loser ++;
-                                }
-                            }
-                        }
-                    }
-                    echo "<br>".$count_winner."<br>".$count_loser;
-                    ?>
-                    
                     
                     <!-- displays the donut chart -->  
                     <div id="longshortchart">
@@ -351,6 +379,7 @@
                 END of menu main grid div
              -->                  
 
+              
 
             <!-- ---------------------------------------------
                 Top grid item (TOP CHART)
@@ -366,51 +395,55 @@
             <div class="grid-item" id="grid-item-main">
 
 
-            
+                <!-- ------------------------------------------------------------------------------------------------------------
+                    Dropdown list for MONTH and YEAR selection
+                ---------------------------------------------------------------------------------------------------------------->    
                 <!-- Will initiate the variable for the dates of the Trading journal -->
                 <?php
-                //If submit, then selected month, else current month and year.
-                if(isset($_POST['submit'])){
+                //If month_selection, then selected month, else current month and year.     
                 if(!empty($_POST['month_selection'])) {
                     $month = $_POST['month_selection'];
-                    $thisyear = $_POST['year_selection'];
-                }
+                    $year = $_POST['year_selection'];
+                
                 } else {
                     $month = date("n");
-                    $thisyear = date("Y");
+                    $year = date("Y");
                 }
 
                 $aDates = array();
-                $oStart = new DateTime($thisyear.$month.'/01');
+                $oStart = new DateTime($year.$month.'/01');
                 $oEnd = clone $oStart;
                 $oEnd->add(new DateInterval("P1M"));
                 ?>
 
-                <!-- ------------------------------------------------------------------------------------------------------------
-                    Dropdown list for MONTH and YEAR selection
-                ---------------------------------------------------------------------------------------------------------------->
+                <!-- month and year -->
                 <p id="month_year_dropdown">
                 <form action="" method="post">
                     <!-- ---------------------------------------------
                         Displays months and select the current month
                     -------------------------------------------------> 
-                    <select class="dropdown" id="month_selection" name="month_selection" onclick="this.form.submit();">
+                    <select class="dropdown" id="month_selection" name="month_selection" onchange="this.form.submit();">
+
                     <?php
                     for ($i = 1; $i <= 12; $i++) { 
                         $select = "";
                         if(isset($_POST['month_selection']) AND $_POST['month_selection'] == $i){
                             $select = "selected";
                         }
-                        echo "<option value='$i' '$select'>$months[$i]</option>";
-                    }
+                        //echo "<option value='$i' $select>$months[$i]$select</option>";
+?>
+                        <option value="<?php echo $i; ?>" <?php if(isset($_POST['month_selection']) && $_POST['month_selection'] == "$i") echo 'selected="selected"';?>><?php echo $months[$i]; ?></option>
+    <?php                }
                     ?>
                     </select>
 
                     <!-- ---------------------------------------------
                         Displays year and select the current year
                     ------------------------------------------------->
-                    <select class="dropdown" id="year_selection" name="year_selection" onclick="this.form.submit();">
-                    <?php CreateDropDown(array($years[1],$years[2],$years[3],$years[4]),$thisyear); ?>
+                    <select class="dropdown" id="year_selection" name="year_selection" onchange="this.form.submit();">
+
+                    <!-- ----------- create years dropdown list ------------- -->
+                    <?php CreateDropDown(array($years[1],$years[2],$years[3],$years[4]),$year); ?>
                     </select>
                 </form>
 

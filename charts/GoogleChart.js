@@ -1,15 +1,16 @@
 /*---------------------------------------------------------------------------
   % Win ratio donut chart
 ---------------------------------------------------------------------------*/
-/*google.charts.load('current', {'packages':['corechart']});
+
+google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawWinRatioChart);
 
 function drawWinRatioChart() {
 
   var data = google.visualization.arrayToDataTable([
     ['Effort', 'Amount given'],
-    ['Winners', 56],
-    ['Losers', 8],
+    ['Winners', 31],
+    ['Losers', 12],
   ]);
 
   var options = {
@@ -29,8 +30,8 @@ function drawWinRatioChart() {
 
   var chart = new google.visualization.PieChart(document.getElementById('winratiochart'));
   chart.draw(data, options);
-}*/
-
+}
+/*
 //https://developers.google.com/chart/interactive/docs/php_example
 
 // Load the Visualization API and the piechart package.
@@ -40,7 +41,7 @@ google.charts.setOnLoadCallback(drawChart);
   
 function drawChart() {
   var jsonData = $.ajax({
-      url: "./charts/data_win-ratio.php.php",
+      url: "./charts/data_win-ratio.php",
       dataType: "json",
       async: false
       }).responseText;
@@ -68,6 +69,7 @@ function drawChart() {
   chart.draw(data, options);
 }
 
+*/
 /*---------------------------------------------------------------------------
   Long vs short donut chart
 ---------------------------------------------------------------------------*/

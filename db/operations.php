@@ -6,7 +6,6 @@ DB operation triggered by $_POST variables
 // Variables.
 // ----------------------------------------------------------------------------------- //
 
-$nbroftrades = 10; //max number of daily trade possible
 $loss = 0;
 $gain = 0;
 $pos_main = 0;  //initiate positive trades count
@@ -17,7 +16,7 @@ $benefitPerPoint = 50; //dollar amount per points earned
 
 if (isset($_POST['current_account_id'])){ //allows to display the same account data after insrte or update of the table
   $_SESSION['current_selected_account'] = $_POST['current_account_id'];
-}else{
+}elseif (isset ($_SESSION['current_selected_account'])){
   $_POST['current_account_id'] = $_SESSION['current_selected_account'];
 }
 
@@ -52,8 +51,6 @@ if (isset($_POST['updated_name']) AND $_POST['updated_name'] != "") {
 if (isset($_POST['delete']) AND $_POST['delete'] != "") {
   $updated_acc_id = $_POST['account_selection_to_update'];
 
-  //$updated_acc_id = filter_input(INPUT_POST, 'account_selection_to_update', FILTER_SANITIZE_STRING);
-
   $sql = "DELETE FROM accounts WHERE id='$updated_acc_id'";
 
   if ($conn->query($sql) === TRUE) {
@@ -83,6 +80,12 @@ if (isset($_POST['edit_trade'])) {
     $runner_cnt6 = $_POST['runner_cnt6'];
     $main_cnt7   = $_POST['main_cnt7'];
     $runner_cnt7 = $_POST['runner_cnt7'];
+    $main_cnt8   = $_POST['main_cnt7'];
+    $runner_cnt8 = $_POST['runner_cnt7'];
+    $main_cnt9   = $_POST['main_cnt7'];
+    $runner_cnt9 = $_POST['runner_cnt7'];
+    $main_cnt10   = $_POST['main_cnt7'];
+    $runner_cnt10 = $_POST['runner_cnt7'];
     $main_pts1   = $_POST['main_pts1'];
     $runner_pts1 = $_POST['runner_pts1'];
     $main_pts2   = $_POST['main_pts2'];
@@ -222,7 +225,7 @@ if (isset($_POST['new_trade'])) {
   runner_cnt1,
   main_cnt2,
   runner_cnt2,
-  main_cnt03,
+  main_cnt3,
   runner_cnt3,
   main_cnt4,
   runner_cnt4,
@@ -292,15 +295,17 @@ if (isset($_POST['new_trade'])) {
 }  
 
 // ----------------------------------------------------------------------------------- //
-// Emotion soother
+// User options
 // ----------------------------------------------------------------------------------- //
+
+// ------------------- emotion soother -------------------
 if (isset($_POST['pl_switch_on'])) {
   $emotion_soother_on = $_POST['pl_switch_on'];
 
   $sql = "UPDATE users SET pl='$emotion_soother_on' WHERE id='1'";
 
   if ($conn->query($sql) === TRUE) {
-    echo "Emotion soother ON";
+    //echo "Emotion soother ON";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
@@ -310,7 +315,30 @@ if (isset($_POST['pl_switch_on'])) {
   $sql = "UPDATE users SET pl='$emotion_soother_off' WHERE id='1'";
 
   if ($conn->query($sql) === TRUE) {
-    echo "Emotion soother OFF";
+    //echo "Emotion soother OFF";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+// ------------------- full table -------------------
+if (isset($_POST['table_switch_on'])) {
+  $full_table_on = $_POST['table_switch_on'];
+
+  $sql = "UPDATE users SET full_table='$full_table_on' WHERE id='1'";
+
+  if ($conn->query($sql) === TRUE) {
+    //echo "Full table ON";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}elseif (isset($_POST['pl_switch_off'])) {
+  $full_table_off = $_POST['table_switch_off'];
+
+  $sql = "UPDATE users SET full_table='$full_table_off' WHERE id='1'";
+
+  if ($conn->query($sql) === TRUE) {
+    //echo "Full table OFF";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
