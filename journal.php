@@ -20,6 +20,7 @@
             <th colspan="2" class="trade" style="display:<?php echo $display_full_table; ?>;"> Trade - 10 </th>
             <th class="trade" style="display:<?php echo $display_tabl_pl; ?>;"> Daily </th>
             <th rowspan="2"> Edit </th>
+            <th rowspan="2"><img src=https://img.icons8.com/material-outlined/344/comments--v1.png></th>
         </tr>
         <tr>
             <th> Main </th>
@@ -145,6 +146,7 @@
                                     </div>
                                 </td>
                                 <td rowspan="2"><button type="button" name="edit_trade" class="editbtn" id="<?php echo $row['id']; ?>">Edit</button><input type="hidden" name="trade_id" value="<?php echo $row['id']; ?>"><input type="hidden" name="current_account" value="<?php echo $current_account_id; ?>"></td>
+                                <td rowspan="2"><img src=https://img.icons8.com/material-outlined/344/comments--v1.png></td>
                                 <!-- <td rowspan="2"><input type="image" class="editbtn" id="editbtn" alt="edit" value ="Edit" src="./img/edit-11-24.png"></td> -->
                             </tr>
 
@@ -180,10 +182,6 @@
 
             }else{ ?>
 
-
-
-
-
                 <!-- ---------------------------------------------
                     table body without trade informationaaa
                 ------------------------------------------------->
@@ -215,10 +213,11 @@
                             <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_cnt8" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
                             <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_cnt9" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
                             <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_cnt9" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
-                            <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_cnt010" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
+                            <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_cnt10" class="editable_input" id="main" type="number" value="0" readonly="readonly" ></td>
                             <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_cnt10" class="editable_input" id="runner" type="number" value="0" readonly="readonly" ></td>
                             <td rowspan="2" style="display:<?php echo $display_tabl_pl; ?>;"> 0 </td>
                             <td rowspan="2"><button type="button" name="new_trade" class="editbtn" id="<?php echo 'btn'.$btnID; ?>">Edit</button><input type="hidden" name="trade_date" value="<?php echo $fulldate; ?>"><input type="hidden" name="current_account" value="<?php echo $current_account_id; ?>"></td>
+                            <td rowspan="2"><img src=https://img.icons8.com/material-outlined/344/comments--v1.png></td>
                         <!-- <td rowspan="2"><input type="image" class="editbtn" id="editbtn" alt="edit" value ="Edit" src="./img/edit-11-24.png"></td> -->
                         </tr>
                         <!-- ---------------------------------------------

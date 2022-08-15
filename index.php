@@ -24,12 +24,13 @@
         <!-- GOOGLE CHARTS -->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>       
-        <script src="./charts/GoogleChart.js"></script>
+        <!-- <script src="./charts/GoogleChart.js"></script> -->
         
         <?php
         require __DIR__ . '/functions/functions.php';
         require __DIR__ . '/db/db_conn.php';
-        require __DIR__ . '/db/operations.php';  
+        require __DIR__ . '/db/operations.php';
+         
         error_reporting (E_ALL ^ E_NOTICE); // avoid index errors
         ?>
 
@@ -329,7 +330,7 @@
                     $count_w = 0;
                     $count_l = 0;
 
-                    $sql = "SELECT * FROM trades WHERE acc_fid = 6";
+                    $sql = "SELECT * FROM trades WHERE acc_fid = $current_account_id";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -347,13 +348,17 @@
                         }
                     }
 
+                    //Variables used by the chart
+                    $labels = ["Wins", "Losses"];
+                    $result = [$count_w, $count_l];
+
                     //percentage of winner
                     $winratio = intval(($count_w / ($count_l + $count_w)) * 100);
                     ?>
 
                     <!-- displays the donut chart -->  
                     <div id="winratiochart">
-
+                        <?php include "./charts/GoogleChart.php"; ?>
                     </div>
                     <!-- Result placed in the middle of the chart -->
                     <div id="Win-Ratio-Center">
