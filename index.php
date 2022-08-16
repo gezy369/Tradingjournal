@@ -322,7 +322,7 @@
                     // ---------------------------------------------
                     //   Displays total P/L
                     // ---------------------------------------------
-                    $sql = "SELECT * FROM accounts WHERE user_fid = 1";
+                    $sql = "SELECT * FROM trades WHERE acc_fid = '5'";
                     $result = $conn->query($sql);
                     $daily_pl = 0;
                     
@@ -333,7 +333,7 @@
                             $total_pl = $daily_pl + ($row["gain"] + $row["loss"]) - $row["costs"];
                         }
                     }
-                    echo $total_pl;
+                    echo "<p id = 'pl_display'>".$total_pl."</p>";
                     ?>
                 </div> <!-- menu item 3 -->
 
@@ -362,14 +362,13 @@
                                 }
                             }
                         }
+                        //Variables used by the chart
+                        $labels = ["Wins", "Losses"];
+                        $result = [$count_w, $count_l];
+                        //percentage of winner
+                        $winratio = intval(($count_w / ($count_l + $count_w)) * 100);
                     }
 
-                    //Variables used by the chart
-                    $labels = ["Wins", "Losses"];
-                    $result = [$count_w, $count_l];
-
-                    //percentage of winner
-                    $winratio = intval(($count_w / ($count_l + $count_w)) * 100);
                     ?>
 
                     <!-- displays the donut chart -->  
