@@ -432,7 +432,9 @@
             ------------------------------------------------->   
             <div class="grid-item" id="grid-item-top">
                 <!-- displays the top chart -->
-                <script src="./javascript/top-chart.js"></script>
+                <div id="pltopchart">
+                
+                </div>
             </div>
 
             <!-- ---------------------------------------------
