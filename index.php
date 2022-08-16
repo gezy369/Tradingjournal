@@ -318,7 +318,20 @@
                     <div class="open-btn">
                         <button class="open-button" onclick="openFormManage()"><strong>Manage account</strong></button>
                     </div>
+                    <?php
+                    // ---------------------------------------------
+                    //   Displays total P/L
+                    // ---------------------------------------------
+                    $sql = "SELECT * FROM accounts";
+                    $result = $conn->query($sql);
 
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            //should display the daily p/l to calculate the total p/l
+                        }
+                    }
+                    ?>
                 </div> <!-- menu item 3 -->
 
                 <!-- ---------------------------------------------
