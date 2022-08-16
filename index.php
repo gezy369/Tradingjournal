@@ -322,15 +322,18 @@
                     // ---------------------------------------------
                     //   Displays total P/L
                     // ---------------------------------------------
-                    $sql = "SELECT * FROM accounts";
+                    $sql = "SELECT * FROM accounts WHERE user_fid = 1";
                     $result = $conn->query($sql);
-
+                    $daily_pl = 0;
+                    
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
-                            //should display the daily p/l to calculate the total p/l
+                            // p&l calculation
+                            $total_pl = $daily_pl + ($row["gain"] + $row["loss"]) - $row["costs"];
                         }
                     }
+                    echo $total_pl;
                     ?>
                 </div> <!-- menu item 3 -->
 
