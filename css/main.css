@@ -94,7 +94,10 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
+#pl_display{
+  font-size: 30px;
+  text-align: center;
+}
 /* -------------------------- Charts -------------------------- */
 #Win-Ratio-Center{
   position: relative;
