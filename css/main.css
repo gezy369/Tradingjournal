@@ -34,6 +34,16 @@ input[type=text], select {
 #user_options_form .switch_labels {
     margin: 0px 20px 0px 10px;
 }
+#pl_display{
+  font-size: 30px;
+  text-align: center;
+}
+.open-btn img{
+  height: 20px;
+}
+.open-btn img:hover{
+  cursor: pointer;
+}
 /* -------------------------- toggle switch -------------------------- */
 .switch {
   position: relative;
