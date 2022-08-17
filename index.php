@@ -313,10 +313,12 @@
                     <!-- Accounts management buttons -->
                     <div class="open-btn">
                         <button class="open-button" onclick="openFormCreate()"><strong>Create new account</strong></button>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="Manage Accounts" onclick="openFormCreate()">
                     </div>
                     
                     <div class="open-btn">
                         <button class="open-button" onclick="openFormManage()"><strong>Manage account</strong></button>
+                        <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="New Account" onclick="openFormManage()">
                     </div>
                     <?php
                     // ---------------------------------------------
