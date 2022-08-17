@@ -312,14 +312,10 @@
                 
                     <!-- Accounts management buttons -->
                     <div class="open-btn">
-                        <button class="open-button" onclick="openFormCreate()"><strong>Create new account</strong></button>
                         <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="Manage Accounts" onclick="openFormCreate()">
-                    </div>
-                    
-                    <div class="open-btn">
-                        <button class="open-button" onclick="openFormManage()"><strong>Manage account</strong></button>
                         <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="New Account" onclick="openFormManage()">
                     </div>
+
                     <?php
                     // ---------------------------------------------
                     //   Displays total P/L
@@ -335,7 +331,7 @@
                             $total_pl = $daily_pl + ($row["gain"] + $row["loss"]) - $row["costs"];
                         }
                     }
-                    echo "<p id = 'pl_display'>".$total_pl."</p>";
+                    echo "<p id = 'pl_display' style='display:".$display_tabl_pl.";'>".$total_pl."</p>";
                     ?>
                 </div> <!-- menu item 3 -->
 
