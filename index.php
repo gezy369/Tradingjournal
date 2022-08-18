@@ -320,7 +320,7 @@
                     // ---------------------------------------------
                     //   Displays total P/L
                     // ---------------------------------------------
-                    $sql = "SELECT * FROM trades WHERE acc_fid = '5'";
+                    $sql = "SELECT * FROM trades WHERE acc_fid = '6'";
                     $result = $conn->query($sql);
                     $daily_pl = 0;
                     
@@ -328,7 +328,7 @@
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
                             // p&l calculation
-                            $total_pl = $daily_pl + ($row["gain"] + $row["loss"]) - $row["costs"];
+                            $total_pl = $total_pl + ($row["gain"] + $row["loss"]) - $row["costs"];
                         }
                     }
                     echo "<p id = 'pl_display' style='display:".$display_tabl_pl.";'>".$total_pl."</p>";
