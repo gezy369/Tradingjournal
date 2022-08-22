@@ -1,27 +1,27 @@
 /* --------------- Journal Table --------------- */
 table {
- margin: 10px auto;
- text-align: left;
- border-collapse: collapse;
- /*width: 1150px;*/
+    margin: 10px auto;
+    text-align: left;
+    border-collapse: collapse;
+    /*width: 1150px;*/
 }
 td, th{
- text-align: center;
- vertical-align: middle;
- font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: normal;
 }
 
 thead th {
- background: #004f99;
- color: #fff;
- font-size: 14px;
+    background: #004f99;
+    color: #fff;
+    font-size: 14px;
 }
 thead {
-box-shadow: 0px 5px 5px #cfcfcf;
+    box-shadow: 0px 5px 5px #cfcfcf;
 }
 
 tbody{
- font-size: 14px;
+    font-size: 14px;
 }
 
 tbody [rowspan],
@@ -29,95 +29,110 @@ tbody [rowspan] ~ th,
 tbody [rowspan] ~ td,
 
 tbody {
- border-top: solid #E6E6E6;
- border-top-width: thin;
+    border-top: solid #E6E6E6;
+    border-top-width: thin;
 }
 tbody td:nth-last-of-type(1),
 tbody td:nth-last-of-type(2) {
- text-align: center;
+    text-align: center;
 }
 tbody:nth-child(odd) {
- background: #f7f7f773;
+    background: #f7f7f773;
 }
 .dates_cell{
- text-align: left;
- vertical-align: middle;
- padding-left: 8px;
- width: 80px;
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 8px;
+    width: 80px;
 }
 .nbr_trade_cell{
-  width: 30px;
+    width: 30px;
 }
 table .contracts{
- font-size: 14px;
+    font-size: 14px;
 }
 
 
 /* style for input */
 table input[type="number"]{
-  width: 60px;
-  border: transparent;
-  margin: 1px;
-  background-color: transparent;
-  font-size: 12px;
-  text-align: center;
-  color:lightgrey;
+    width: 60px;
+    border: transparent;
+    margin: 1px;
+    background-color: transparent;
+    font-size: 12px;
+    text-align: center;
+    color:lightgrey;
  }
 
 .editbtn{
-  /*width: 65%;*/
+    /*width: 65%;*/
+    margin-left: 10px;
+    transition-duration: 0.4s;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}  
+.editbtn:hover {
+    background-color: #008CBA;
+    color: white;
 }
 table input:hover{
- background-color: #FFE5CC;
+    background-color: #FFE5CC;
 }
 
 tbody:hover .dates_cell {
-  font-weight: bold;
+    font-weight: bold;
 }
 table p {
-margin:0;
+    margin:0;
 }
 #weekendDay{
-  background: #004f99 !important;
-  border-color: #cfcfcf;
-  letter-spacing: 5px;
-  font-size: 12px;
-  color: white;
-  text-align: left;
-  box-shadow: 0px 5px 5px #cfcfcf;
-  padding-left: 8px;
+    background: #004f99 !important;
+    border-color: #cfcfcf;
+    letter-spacing: 5px;
+    font-size: 12px;
+    color: white;
+    text-align: left;
+    box-shadow: 0px 5px 5px #cfcfcf;
+    padding-left: 8px;
 }
 .green{
-  color:green
-  !important;
+    color:green
+    !important;
 }
 .red{
-  color:red
-  !important;
+    color:red
+    !important;
 }
 .grey{
-  color:grey
-  !important;
+    color:grey
+    !important;
 }
 .runner{
-  border-right: thin solid #004f99;
-  border-left: thin dashed lightgrey;
-  width: 60px;
+    border-right: thin solid #004f99;
+    border-left: thin dashed lightgrey;
+    width: 60px;
 }
 .main{
-  border-left: thin solid #004f99;
-  width: 60px;
+    border-left: thin solid #004f99;
+    width: 60px;
 }
 #today{ /*today's row*/
-  border: 1px solid #bdbdbd !important;
-  box-shadow: 0px 5px 5px #cfcfcf;
-  background: #fff0d7;
+    border: 1px solid #bdbdbd !important;
+    box-shadow: 0px 5px 5px #cfcfcf;
+    background: #fff0d7;
 }
 #today .dates_cell{
-  font-weight:700;
+    font-weight:700;
 }
 table img{
-  height:20px;
-  padding-left: 10px;
-  padding-right: 2px;;
+    height:20px;
+    padding-left: 10px;
+    padding-right: 2px;
+    opacity: 0.1;
+    cursor: pointer;
+}
+.img_active, table img:hover{
+    opacity: 1;
 }

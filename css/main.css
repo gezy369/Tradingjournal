@@ -35,84 +35,97 @@ input[type=text], select {
     margin: 0px 20px 0px 10px;
 }
 #pl_display{
-  font-size: 30px;
-  text-align: center;
+    font-size: 30px;
+    text-align: center;
+}
+.open-btn{
+    width: 70%;
 }
 .open-btn img{
-  height: 20px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 .open-btn img:hover{
-  cursor: pointer;
+    cursor: pointer;
+}
+#grid-item-menu-3 hr{
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #999999, #000000, #999999);
 }
 /* -------------------------- toggle switch -------------------------- */
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 18px;
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 18px;
 }
 
 .switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 10px;
-  width: 10px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+    background-color: #2196F3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #2196F3;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(10px);
-  -ms-transform: translateX(20px);
-  transform: translateX(20px);
+    -webkit-transform: translateX(10px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 #pl_display{
-  font-size: 30px;
-  text-align: center;
+    font-size: 30px;
+    text-align: center;
 }
+
 /* -------------------------- Charts -------------------------- */
 #Win-Ratio-Center{
-  position: relative;
-  text-align: center;
-  top: -46%;
-  left: 0%;
-  font-size: 30px;
+    position: relative;
+    text-align: center;
+    top: -46%;
+    left: 0%;
+    font-size: 30px;
 }

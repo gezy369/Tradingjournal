@@ -20,7 +20,7 @@
             <th colspan="2" class="trade" style="display:<?php echo $display_full_table; ?>;"> Trade - 10 </th>
             <th class="trade" style="display:<?php echo $display_tabl_pl; ?>;"> Daily </th>
             <th rowspan="2"> Edit </th>
-            <th rowspan="2"><img src=https://img.icons8.com/material-outlined/344/comments--v1.png></th>
+            <th rowspan="2"></th>
         </tr>
         <tr>
             <th> Main </th>

@@ -287,6 +287,13 @@
                         echo $userprofile['name'];
                         ?>
                     </p>
+                    <hr>
+                    <!-- Accounts management buttons -->
+                    <div class="open-btn">
+                        Accounts 
+                        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="Manage Accounts" onclick="openFormCreate()">
+                        <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="New Account" onclick="openFormManage()">
+                    </div>
 
                     <!-- ----------------------------------------------------------------------------------------------------------->
                     <!--  Dropdown list for account selection -->
@@ -310,12 +317,6 @@
                         </select>
                     </form>
                 
-                    <!-- Accounts management buttons -->
-                    <div class="open-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="Manage Accounts" onclick="openFormCreate()">
-                        <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="New Account" onclick="openFormManage()">
-                    </div>
-
                     <?php
                     // ---------------------------------------------
                     //   Displays total P/L
@@ -331,7 +332,12 @@
                             $total_pl = $total_pl + ($row["gain"] + $row["loss"]) - $row["costs"];
                         }
                     }
-                    echo "<p id = 'pl_display' style='display:".$display_tabl_pl.";'>".$total_pl."</p>";
+                    if ($display_tabl_pl == "none") {
+                        echo "<p id = 'pl_display'>Take it easy</p>";
+                    }else {
+                        echo "<p id = 'pl_display'>".$total_pl."</p>";
+                    }
+                    
                     ?>
                 </div> <!-- menu item 3 -->
 
