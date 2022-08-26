@@ -137,7 +137,7 @@
                                 <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_cnt10" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_cnt10"]; ?>" readonly="readonly" ></td>
                                 <td rowspan="2" style="display:<?php echo $display_tabl_pl; ?>;">
                                     <div class="popup" onclick="openDetails(<?php echo $popupID; ?>)">
-                                        <?php echo $pl; ?>
+                                        <?php echo $row["pl"]; ?>
                                         <span class="popuptext" id="<?php echo $popupID; ?>">
                                         Gain : <?php echo $row["gain"];?><br>
                                         Loss : <?php echo $row["loss"]; ?><br>

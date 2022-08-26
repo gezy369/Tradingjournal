@@ -38,16 +38,16 @@ input[type=text], select {
     font-size: 30px;
     text-align: center;
 }
-.open-btn{
-    width: 70%;
+.account-btn{
+    width: auto;
 }
-.open-btn img{
-    height: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+.account-btn img{
+    height: 14px;
+    margin-left: 10px;
+    margin-top: 2px;
+    margin-right: 60px;
 }
-.open-btn img:hover{
+.account-btn img:hover{
     cursor: pointer;
 }
 #grid-item-menu-3 hr{
@@ -55,6 +55,9 @@ input[type=text], select {
     height: 1px;
     background: #333;
     background-image: linear-gradient(to right, #999999, #000000, #999999);
+}
+#journal-top-bar{
+    display:flex;
 }
 /* -------------------------- toggle switch -------------------------- */
 .switch {

@@ -134,6 +134,7 @@ if (isset($_POST['edit_trade'])) {
     }
 
     $cost = $fees * $total_contracts;
+    $final_pl = $gain + $loss - $cost;
 
     //SQL query
     $sql = "UPDATE trades SET
@@ -175,7 +176,8 @@ if (isset($_POST['edit_trade'])) {
     runner_pts10  ='$runner_pts10',
     gain          ='$gain',
     loss          ='$loss',
-    costs         ='$cost'
+    costs         ='$cost',
+    pl            ='$final_pl'
     WHERE id='$trade_id'";
 
     if ($conn->query($sql) === TRUE) {
@@ -254,6 +256,7 @@ $total_contracts = $total_contracts + abs($_POST['main_cnt'.$i]);
 }
 
 $cost = $fees * $total_contracts;
+$final_pl = $gain + $loss - $cost;
 
 $sql = "INSERT INTO trades
 (pos_tr_count,
@@ -302,7 +305,8 @@ trade_date,
 acc_fid,
 gain,
 loss,
-costs)
+costs,
+pl)
 VALUES(
 '$pos_main',
 '$neg_main',
@@ -350,7 +354,8 @@ VALUES(
 '$account',
 '$gain',
 '$loss',
-'$cost')";
+'$cost',
+'$final_pl')";
 //acount ID here !!
   if ($conn->query($sql) === TRUE) {
     echo "Trade added successfully";

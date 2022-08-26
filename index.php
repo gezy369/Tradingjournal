@@ -288,35 +288,7 @@
                         ?>
                     </p>
                     <hr>
-                    <!-- Accounts management buttons -->
-                    <div class="open-btn">
-                        Accounts 
-                        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="Manage Accounts" onclick="openFormCreate()">
-                        <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="New Account" onclick="openFormManage()">
-                    </div>
-
-                    <!-- ----------------------------------------------------------------------------------------------------------->
-                    <!--  Dropdown list for account selection -->
-                    <!-- ----------------------------------------------------------------------------------------------------------->
-                    <form method="post">
-                        <select name="current_account_id" id="account_selection" onchange='this.form.submit()'>
-                        <?php
-                            $sql = "SELECT * FROM accounts";
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                // output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    if ($row['id'] == $current_account_id){     //select the current used account
-                                        $select = "selected";}else{$select = ""; 
-                                    } 
-                                    echo "<option value='$row[id]' $select> $row[acc_name] </option>";
-                                }
-                            }
-                        ?>
-                        </select>
-                    </form>
-                
+                                
                     <?php
                     // ---------------------------------------------
                     //   Displays total P/L
@@ -335,7 +307,7 @@
                     if ($display_tabl_pl == "none") {
                         echo "<p id = 'pl_display'>Take it easy</p>";
                     }else {
-                        echo "<p id = 'pl_display'>".$total_pl."</p>";
+                        echo "<p id = 'pl_display'>$".$total_pl."</p>";
                     }
                     
                     ?>
@@ -444,69 +416,100 @@
                 Main grid item (JOURNAL)
             -------------------------------------------------> 
             <div class="grid-item" id="grid-item-main">
+                <div id="journal-top-bar">
+                    
+                    <!-- ----------------------------------------------------------------------------------------------------------->
+                    <!--  Dropdown list for account selection -->
+                    <!-- ----------------------------------------------------------------------------------------------------------->
+                    <form method="post">
+                        
+                        <select name="current_account_id" id="account_selection" onchange='this.form.submit()'>
+                        <?php
+                            $sql = "SELECT * FROM accounts";
+                            $result = $conn->query($sql);
 
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                                    if ($row['id'] == $current_account_id){     //select the current used account
+                                        $select = "selected";}else{$select = ""; 
+                                    } 
+                                    echo "<option value='$row[id]' $select> $row[acc_name] </option>";
+                                }
+                            }
+                        ?>
+                        </select>
+                    </form>
 
-                <!-- ------------------------------------------------------------------------------------------------------------
-                    Dropdown list for MONTH and YEAR selection
-                ---------------------------------------------------------------------------------------------------------------->    
-                <!-- Will initiate the variable for the dates of the Trading journal -->
-                <?php
-                //If month_selection, then selected month, else current month and year.     
-                if(!empty($_POST['month_selection'])) {
-                    $month = $_POST['month_selection'];
-                    $year = $_POST['year_selection'];
-                
-                } else {
-                    $month = date("n");
-                    $year = date("Y");
-                }
+                    <!-- Accounts management buttons -->
+                    <div class="account-btn"> 
+                        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="New Accounts" onclick="openFormManage()">
+                        <br>
+                        <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="Manage Account" onclick="openFormCreate()">
+                    </div>
 
-                $aDates = array();
-                $oStart = new DateTime($year.$month.'/01');
-                $oEnd = clone $oStart;
-                $oEnd->add(new DateInterval("P1M"));
-                ?>
-
-                <!-- month and year -->
-                <p id="month_year_dropdown">
-                <form action="" method="post">
-                    <!-- ---------------------------------------------
-                        Displays months and select the current month
-                    -------------------------------------------------> 
-                    <select class="dropdown" id="month_selection" name="month_selection" onchange="this.form.submit();">
-
+                    <!-- ------------------------------------------------------------------------------------------------------------
+                        Dropdown list for MONTH and YEAR selection
+                    ---------------------------------------------------------------------------------------------------------------->    
+                    <!-- Will initiate the variable for the dates of the Trading journal -->
                     <?php
-                    for ($i = 1; $i <= 12; $i++) { 
-                        $select = "";
-                        if(isset($_POST['month_selection']) AND $_POST['month_selection'] == $i){
-                            $select = "selected";
-                        }
-                        //echo "<option value='$i' $select>$months[$i]$select</option>";
-?>
-                        <option value="<?php echo $i; ?>" <?php if(isset($_POST['month_selection']) && $_POST['month_selection'] == "$i") echo 'selected="selected"';?>><?php echo $months[$i]; ?></option>
-    <?php                }
+                    //If month_selection, then selected month, else current month and year.     
+                    if(!empty($_POST['month_selection'])) {
+                        $month = $_POST['month_selection'];
+                        $year = $_POST['year_selection'];
+                    
+                    } else {
+                        $month = date("n");
+                        $year = date("Y");
+                    }
+
+                    $aDates = array();
+                    $oStart = new DateTime($year.$month.'/01');
+                    $oEnd = clone $oStart;
+                    $oEnd->add(new DateInterval("P1M"));
                     ?>
-                    </select>
+
+                    <!-- month and year -->
+                    <p id="month_year_dropdown">
+                    <form action="" method="post">
+                        <!-- ---------------------------------------------
+                            Displays months and select the current month
+                        -------------------------------------------------> 
+                        <select class="dropdown" id="month_selection" name="month_selection" onchange="this.form.submit();">
+
+                        <?php
+                        for ($i = 1; $i <= 12; $i++) { 
+                            $select = "";
+                            if(isset($_POST['month_selection']) AND $_POST['month_selection'] == $i){
+                                $select = "selected";
+                            }
+                            //echo "<option value='$i' $select>$months[$i]$select</option>";
+                            ?>
+                            <option value="<?php echo $i; ?>" <?php if(isset($_POST['month_selection']) && $_POST['month_selection'] == "$i") echo 'selected="selected"';?>><?php echo $months[$i]; ?></option>
+                            <?php
+                        }
+                        ?>
+                        </select>
+
+                        <!-- ---------------------------------------------
+                            Displays year and select the current year
+                        ------------------------------------------------->
+                        <select class="dropdown" id="year_selection" name="year_selection" onchange="this.form.submit();">
+
+                        <!-- ----------- create years dropdown list ------------- -->
+                        <?php CreateDropDown(array($years[1],$years[2],$years[3],$years[4]),$year); ?>
+                        </select>
+                    </form>
 
                     <!-- ---------------------------------------------
-                        Displays year and select the current year
-                    ------------------------------------------------->
-                    <select class="dropdown" id="year_selection" name="year_selection" onchange="this.form.submit();">
+                        Displays current month is nothing selected
+                    -------------------------------------------------> 
+                    <script>
+                        document.getElementById('month_selection').selectedIndex=<?php echo $month-1; ?>;
+                    </script>
 
-                    <!-- ----------- create years dropdown list ------------- -->
-                    <?php CreateDropDown(array($years[1],$years[2],$years[3],$years[4]),$year); ?>
-                    </select>
-                </form>
-
-                <!-- ---------------------------------------------
-                    Displays current month is nothing selected
-                -------------------------------------------------> 
-                <script>
-                    document.getElementById('month_selection').selectedIndex=<?php echo $month-1; ?>;
-                </script>
-
-                </p>
-
+                    </p>
+                </div>
                 <!-- ---------------------------------------------------------------------------------
                     JOURNAL TABLE
                 ------------------------------------------------------------------------------------->
