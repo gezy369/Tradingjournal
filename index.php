@@ -317,6 +317,9 @@
                     Menu grid item 1 (Win Ratio CHART)
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-1">  
+                    <!-- ---------------------------------------------
+                        Winners VS Loosers Chart                 
+                    ------------------------------------------------->
                     <?php
                     // -------------------- find % ratio --------------------
                     $count_w = 0;
@@ -362,6 +365,9 @@
                     Menu grid item 2                 
                 ------------------------------------------------->
                 <div class="grid-item" id="grid-item-menu-2">
+                    <!-- ---------------------------------------------
+                        Long VS Short Chart                 
+                    ------------------------------------------------->
                     <?php
                     $long = 0;
                     $short = 0;
@@ -406,9 +412,38 @@
                 Top grid item (TOP CHART)
             ------------------------------------------------->   
             <div class="grid-item" id="grid-item-top">
-                <!-- displays the top chart -->
-                <div id="pltopchart">
-                
+                <!-- ---------------------------------------------
+                    Long VS Short Chart                 
+                ------------------------------------------------->
+                <?php
+                $long = 0;
+                $short = 0;
+
+                $sql = "SELECT * FROM trades WHERE acc_fid = $current_account_id";
+                $result_query = $conn->query($sql);
+
+                if ($result_query->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result_query->fetch_assoc()) {
+
+                        for ($i=0; $i <= $nbroftrades ; $i++) { 
+                            
+                            if ($row['main_cnt'.$i] > 0) {
+                                $long ++;
+                            }elseif ($row['main_cnt'.$i] < 0) {
+                                $short ++;
+                            }
+                        }
+                    }
+                }
+
+                //Variables used by the chart
+                $labels_ls = ["Long", "Short"];
+                $result_ls = [$long, $short];
+                ?>
+                <!-- displays the donut chart -->  
+                <div id="longshortchart">
+                    <?php include "./charts/GoogleChart.php"; ?>
                 </div>
             </div>
 

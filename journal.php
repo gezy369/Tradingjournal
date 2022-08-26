@@ -168,12 +168,12 @@
                                 <td class="runner"><input name="runner_pts6" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts6"]; ?>" readonly="readonly" ></td>
                                 <td class="main"><input name="main_pts7" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts7"]; ?>" readonly="readonly" ></td>
                                 <td class="runner"><input name="runner_pts7" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts7"]; ?>" readonly="readonly" ></td>
-                                <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_pts8" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_pts8"]; ?>" readonly="readonly" ></td>
-                                <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_pts8" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_pts8"]; ?>" readonly="readonly" ></td>
-                                <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_pts9" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_pts9"]; ?>" readonly="readonly" ></td>
-                                <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_pts9" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_pts9"]; ?>" readonly="readonly" ></td>
-                                <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_pts10" class="editable_input contracts" id="main" type="number" value="<?php echo $row["main_pts10"]; ?>" readonly="readonly" ></td>
-                                <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_pts10" class="editable_input contracts" id="runner" type="number" value="<?php echo $row["runner_pts10"]; ?>" readonly="readonly" ></td>
+                                <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_pts8" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts8"]; ?>" readonly="readonly" ></td>
+                                <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_pts8" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts8"]; ?>" readonly="readonly" ></td>
+                                <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_pts9" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts9"]; ?>" readonly="readonly" ></td>
+                                <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_pts9" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts9"]; ?>" readonly="readonly" ></td>
+                                <td class="main" style="display:<?php echo $display_full_table; ?>;"><input name="main_pts10" class="editable_input points" id="main" type="number" value="<?php echo $row["main_pts10"]; ?>" readonly="readonly" ></td>
+                                <td class="runner" style="display:<?php echo $display_full_table; ?>;"><input name="runner_pts10" class="editable_input points" id="runner" type="number" value="<?php echo $row["runner_pts10"]; ?>" readonly="readonly" ></td>
                             </tr>
                         </form>
                     </tbody> 
